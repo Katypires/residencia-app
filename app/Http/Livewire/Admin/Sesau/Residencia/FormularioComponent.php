@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Sesau\Residencia;
 
 use Livewire\Component;
+use App\Models\Admin\Sesau\Residencia\Formulario;
 
 class FormularioComponent extends Component
 {

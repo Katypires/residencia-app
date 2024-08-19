@@ -6,10 +6,11 @@
     {{-- <div class="p-2">
         @include('livewire.admin.crud.table.message')
     </div> --}}
+    <h6>{{var_dump($data)}}</h6>
+
 
     <form wire:submit.prevent="{{ isset($data['id']) ? ($type == 'update' ? 'update' : 'destroy') : 'store' }}">
         @include($form)
-
         <div class="text-center">
             @if (isset($data['id']))
                 @if ($type == 'update')

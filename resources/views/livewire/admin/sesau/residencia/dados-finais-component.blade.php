@@ -1,4 +1,4 @@
-<div class="card p-4 m-4 border-dark">
+<div>
     @if ($openDadosFinais == false)
         <h2 class="text-center p-2">Confirme os dados da Inscrição</h2>
         <div class="row justify-content-center">
@@ -47,37 +47,11 @@
                 </div>
             </div>
         </div>
-
-        <div class="table-responsive">
-            <h6>(Exemplo Tabela)</h6>
-            <table class="table table-hover table-striped-columns">
-                <thead>
-                    <tr class="table-info">
-                        <th scope="col">ID</th>
-                        <th scope="col"><i class="fas fa-user-alt h5"></i> Nome do Candidato</th>
-                        <th scope="col"><i class="fas fa-user-md h5"></i> Categoria</th>
-                        <th scope="col"><i class="fas fa-heartbeat h5"></i> Tipo do Processo</th>
-                        <th scope="col"><i class="fas fa-edit h5"></i> Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Candidato A</td>
-                        <td>Médico</td>
-                        <td>Residência Médica em Família e Comunidade</td>
-                        <td><button class="btn btn-info"><i class="fas fa-print"></i> Boleto</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Candidato A</td>
-                        <td>Médico</td>
-                        <td>Residência Médica em Psiquiatria</td>
-                        <td><button class="btn btn-info"><i class="fas fa-print"></i> Boleto</button></td>
-                    </tr>
-                </tbody>
-            </table>
+        <h2 class="p-2 text-center">Tabela Residente</h2>
+        <div class="card text-white  border border-black p-4 text-center">
+            <div class="row justify-content-center">
+                <livewire:admin.sesau.residencia.formulario-table-component model="App\Models\Admin\Sesau\Residencia\Formulario">
+            </div>
         </div>
-        {{-- @livewire('admin.sesau.residencia.documento-component') --}}
     @endif
 </div>

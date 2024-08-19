@@ -8,6 +8,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Kdion4891\LaravelLivewireTables\Column;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -18,7 +19,7 @@ class Formulario extends Model
     protected $fillable = ['tipo_inscricao', 'nome', 'nome_social', 'cpf', 'celular', 'email', 'data_nascimento', 'rg', 'orgao_expedidor', 'expedicao_rg', 
     'crm', 'crm_estado', 'sexo', 'pais_naturalidade', 'estado_civil', 'cep', 'cidade', 'estado', 'endereco', 'bairro', 'numero', 'complemento', 'instituicao_graduacao', 'ano_conclusao', 
     'cidade_instituicao', 'estado_instituicao', 'ocupacao_profissao', 'curriculo', 'provab', 'tipo_vaga', 'leitura_edital', 'termo_aceitacao', 
-    'solicitacao_isencao','documento_ampla_concorrencia','documento_solicitacao_isencao','documento_provab'];
+    'solicitacao_isencao','documento_ampla_concorrencia','documento_solicitacao_isencao','documento_provab', 'user_id'];
 
     public $rules = [   
         // 'data.tipo_inscricao' => 'required',
@@ -61,8 +62,10 @@ class Formulario extends Model
         return [
             Column::make('ID')->searchable()->sortable(),
             Column::make('Nome do Candidato', 'nome')->searchable()->sortable(),
-            Column::make('Tipo da Inscrição', 'tipo_inscricao')->searchable()->sortable(),
-            Column::make('Ações')->view('livewire.admin.crud.table.actions'),
+            Column::make('Email', 'email')->searchable()->sortable(),
+            Column::make('CPF', 'cpf')->searchable()->sortable(),
+            Column::make('data_nascimento', 'data_nascimento')->searchable()->sortable(),
+            Column::make('Ações')->view('livewire.admin.sesau.residencia.table.table-actions'),
         ];
     }
 
@@ -70,4 +73,9 @@ class Formulario extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    //CODIGO PARA SALVAR EM MAISCULO
+    // public function setNomeAttribute($value){
+    //     $this->attributes['nome'] = strtoupper($value);
+    // }
 }

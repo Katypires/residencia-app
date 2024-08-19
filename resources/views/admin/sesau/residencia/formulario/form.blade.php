@@ -8,9 +8,17 @@
         <label for="nomesocial">2 - Nome Social</label>
     </div>
     <div class="form-floating mb-4 col-sm-12 col-md-3 ">
-        <input type="text" wire:model.prevent="data.cpf" class="form-control">
+        <input type="text" id="cpf" wire:model.prevent="data.cpf" maxlength="11" class="form-control">
         <label for="cpf">3 - CPF*</label>
     </div>
+    {{-- CODIGO DE VALIDAR CPF --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#cpf').mask('000.000.000-00');
+        });
+    </script>
     <div class="form-floating mb-4 col-sm-12 col-md-3">
         <input type="text" wire:model.prevent="data.celular" class="form-control">
         <label for="celular">4 - Celular*</label>

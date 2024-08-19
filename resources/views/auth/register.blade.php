@@ -6,7 +6,7 @@
             <div class="col-lg-7 text-center text-lg-start">
                 <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Inscrições para Residência Médica e
                     Multiprofissional</h1>
-                <p class="col-lg-10 fs-4">Preencha os campos abaixo para realizar sua inscrição. </p>
+                <p class="col-lg-10 fs-4">Preencha os campos para realizar sua inscrição. </p>
             </div>
             <div class="col-md-10 mx-auto col-lg-5">
                 <form method="POST" action="{{ route('register') }}" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
@@ -59,6 +59,14 @@
                             </span>
                         @enderror
                     </div>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+                    <script>
+                        $(document).ready(function() {
+                            $('#cpf').mask('000.000.000-00');
+                        });
+                    </script>
+
 
                     <div class="form-floating mb-3">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -91,7 +99,7 @@
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Registrar</button>
 
                     <hr class="my-4">
-                    <small class="text-body-secondary">Ao clicar em "Registrar", você concorda com os termos de uso.</small>
+                    <small class="text-body-secondary"></small>
                 </form>
             </div>
         </div>
