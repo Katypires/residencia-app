@@ -1,6 +1,6 @@
 <div class="card p-4 mb-4">
     <div class="card p-2 mb-4 bg-light">
-        <h5>{{ $title }}</h5>
+        <h5 class="text-center">{{ $title }}</h5>
     </div>
 
     {{-- <div class="p-2">

@@ -13,7 +13,7 @@
 
                 <div class="col-2 d-flex justify-content-end">
                     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                        <h6 class="text-center px-4">Seja bem vindo, {{ optional(Auth::user())->nome }}</h6>
+                        <h6 class="text-center px-4"> {{ optional(Auth::user())->nome }}</h6>
                     </form>
                     <div class="dropdown text-end">
                         <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
@@ -24,6 +24,7 @@
                             <h6 class="dropdown-item">Dados do Usuário:</h6>
                             <h6 class="dropdown-item">Nome: {{ optional(Auth::user())->nome }}</h6>
                             <h6 class="dropdown-item">Nome social: {{ optional(Auth::user())->nome_social }}</h6>
+                            <h6 class="dropdown-item">Telefone: {{ optional(Auth::user())->celular }}</h6>
                             <h6 class="dropdown-item">Email: {{ optional(Auth::user())->email }}</h6>
                             <h6 class="dropdown-item">CPF: {{ optional(Auth::user())->cpf }}</h6>
 
@@ -102,8 +103,8 @@
                 <div class="col-md-12">
                     <div class="card p-2 mb-4 bg-light border-dark">
                         <livewire:admin.sesau.residencia.crud-form-component key="{{ Str::random(5) }}" formType="form"
-                            title="Inscrições Residencia Médica" model="App\Models\Admin\Sesau\Residencia\Formulario"
-                            form="admin.sesau.residencia.formulario.form" :dados=$dados />
+                            title="Formulário Residência" model="App\Models\Admin\Sesau\Residencia\Formulario"
+                            form="admin.sesau.residencia.formularios.formulario.form" :dados=$dados />
                     </div>
                 </div>
             </div>
@@ -116,8 +117,8 @@
                     style="max-width: 500px">
                     <i class="fas fa-check-circle"></i> Confirmar
                 </button>
-            </div>
-        {{-- @endif
+            {{-- </div>
+        @endif
 
         @if ($openDadosFinais) --}}
             @livewire('admin.sesau.residencia.dados-finais-component', ['categoria' => $categoriaSelecionada])

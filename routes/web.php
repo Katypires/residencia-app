@@ -1,13 +1,7 @@
 <?php
 
-use App\Http\Controllers\InstituicaoController;
-use App\Http\Controllers\ColaboradorController;
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\Controller;
-use app\Http\Livewire\Admin\Crudtab\CrudTableComponent;
 use Illuminate\Support\Facades\Auth;
-use Barryvdh\DomPDF\Facade\Pdf;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +15,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('admin.sesau.residencia.home');
 });
 
 Route::get('/residencia', function () {
@@ -34,7 +28,7 @@ Route::get('/inicial', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('/logout', function () {
     Auth::logout();

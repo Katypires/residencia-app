@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Admin\Sesau\Residencia;
+namespace App\Models\admin\sesau\residencia;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -9,13 +9,13 @@ use Kdion4891\LaravelLivewireTables\Column;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class TipoProcesso extends Model
+class TipoConselho extends Model
 {
     use HasFactory;
-    protected $table= "residencia.tipo_processos";
-    protected $fillable = ['nome', 'user_id', 'status'];
-    //'residencia_familia_comunidade', 'residencia_psiquiatria', 'residencia_multiprofissional_saude_familia', 'residencia_multiprofissional_saude_mental',
+
+    protected $table='residencia.tipo_conselhos';
+
+    protected $fillable = ['nome', 'status'];
 
     public $rules=[
         'data.nome'=> 'required',
@@ -48,5 +48,4 @@ class TipoProcesso extends Model
     {
         $this->attributes['nome'] = strtoupper($value);
     }
-
 }

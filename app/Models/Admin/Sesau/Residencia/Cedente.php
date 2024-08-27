@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Admin\Sesau\Residencia;
+namespace App\Models\admin\sesau\residencia;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -9,19 +9,24 @@ use Kdion4891\LaravelLivewireTables\Column;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Candidato extends Model
+class Cedente extends Model
 {
     use HasFactory;
-    protected $table = 'residencia.candidatos';
-    protected $fillable = ['nome', 'nome_social', 'celular', 'email', 'cpf', 'lattes', 'status'];
+
+    protected $table = 'residencia.cedentes';
+
+    protected $fillable = ['nome', 'cnpj', 'endereco', 'banco', 'agencia', 'conta_corrente', 'numero_convenio', 'nosso_numero'];
 
     public $rules=[
         'data.nome' => 'required|string|max:255',
-        'data.nome_social' => 'nullable|string|max:255',
-        'data.celular' => 'required|string|max:255',
-        'data.email' => 'required|email|max:255',
-        'data.cpf' => 'required|string|size:11|unique:App\Models\Admin\Sesau\Residencia\Candidato,cpf',  
-        'data.status' => 'nullable|boolean',
+        //'data.cnpj' => 'nullable|string|max:18|regex:/^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/', // Valida formato de CNPJ
+        'data.endereco' => 'nullable|string|max:255',
+        'data.banco' => 'nullable|string|max:100',
+        'data.agencia' => 'nullable|string|max:10',
+        'data.conta_corrente' => 'nullable|string|max:20',
+        'data.numero_convenio' => 'nullable|string|max:50',
+        'data.nosso_numero' => 'nullable|string|max:50',
+        'data.status' => 'boolean',
     ];
 
     public static function createdModel()
@@ -37,6 +42,7 @@ class Candidato extends Model
         return [
             Column::make('id')->searchable()->sortable(),
             Column::make('nome')->searchable()->sortable(),
+            Column::make('cnpj')->searchable()->sortable(),
             Column::make('action')->view('livewire.admin.card.action_modal_card'),
         ];
     }
@@ -44,4 +50,5 @@ class Candidato extends Model
     {
         $this->attributes['nome'] = strtoupper($value);
     }
+
 }
