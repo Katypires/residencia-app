@@ -18,10 +18,6 @@ class CreateTipoProcessosTable extends Migration
 
             $table->string('nome')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->boolean('residencia_familia_comunidade')->default(true);
-            $table->boolean('residencia_psiquiatria')->default(false);
-            $table->boolean('residencia_multiprofissional_saude_familia')->default(true);
-            $table->boolean('residencia_multiprofissional_saude_mental')->default(false);
             $table->boolean('status')->default(false);
             
             $table->timestamps();

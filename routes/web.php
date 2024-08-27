@@ -26,6 +26,14 @@ Route::get('/inicial', function () {
     return view('admin.sesau.residencia.inicial');
 })->middleware('auth');
 
+Route::get('/inicial2', function () {
+    return view('admin.sesau.residencia.inicial2');
+});
+
+Route::get('/gestor', function () {
+    return view('admin.sesau.residencia.gestor');
+});
+
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
