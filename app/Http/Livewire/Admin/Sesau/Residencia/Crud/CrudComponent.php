@@ -41,7 +41,7 @@ class CrudComponent extends Component
 
     public function openCloseFormCrud($form)
     {
-        // dd("openCloseFormCrud");
+        dd("openCloseFormCrud");
         $this->emitForm = $form;
         $this->openForm =  !$this->openForm;
     }

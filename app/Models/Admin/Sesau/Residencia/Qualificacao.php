@@ -46,7 +46,7 @@ class Qualificacao extends Model
             Column::make('id')->searchable()->sortable(),
             Column::make('instituicao')->searchable()->sortable(),
             Column::make('curso')->searchable()->sortable(),
-            Column::make('action')->view('livewire.admin.card.action_modal_card'),
+            Column::make('action')->view('livewire.admin.crud.table.actions'),
         ];
     }
 }

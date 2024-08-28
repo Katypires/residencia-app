@@ -9,7 +9,7 @@
             <div class="modal-body">
                 <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" formType="{{$formType}}" modal="{{$modal}}" title="{{$title}}" model="{{$model}}" form="{{$form}}" modalId="{{$modalId}}"/>
                 <livewire:admin.sesau.residencia.crud.crud-table-component key="{{Str::random(5)}}" formType="{{$formType}}" modal="{{$modal}}" title="{{$title}}" model="{{$model}}"  form="{{$form}}" modalId="{{$modalId}}" />
-                {{$model}}
+                {{-- <livewire:admin.sesau.residencia.crud.crud-component key="{{Str::random(5)}}"  formType="form" title={{$title}} model={{$model}} form={{$form}} modalId={{$modalId}} /> --}}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">FECHAR</button>

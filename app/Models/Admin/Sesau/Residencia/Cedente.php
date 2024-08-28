@@ -43,7 +43,7 @@ class Cedente extends Model
             Column::make('id')->searchable()->sortable(),
             Column::make('nome')->searchable()->sortable(),
             Column::make('cnpj')->searchable()->sortable(),
-            Column::make('action')->view('livewire.admin.card.action_modal_card'),
+            Column::make('action')->view('livewire.admin.crud.table.actions'),
         ];
     }
     public function setNomeAttribute($value)

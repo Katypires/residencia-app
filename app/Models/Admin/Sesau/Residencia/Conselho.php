@@ -37,7 +37,7 @@ class Conselho extends Model
             Column::make('id')->searchable()->sortable(),
             Column::make('tipo_conselho_id')->searchable()->sortable(),
             Column::make('numero')->searchable()->sortable(),
-            Column::make('action')->view('livewire.admin.card.action_modal_card'),
+            Column::make('action')->view('livewire.admin.crud.table.actions'),
         ];
     }
 

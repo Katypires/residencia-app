@@ -39,7 +39,7 @@ class Experiencia extends Model
             Column::make('id')->searchable()->sortable(),
             Column::make('curso')->searchable()->sortable(),
             Column::make('cargo_funcao')->searchable()->sortable(),
-            Column::make('action')->view('livewire.admin.card.action_modal_card'),
+            Column::make('action')->view('livewire.admin.crud.table.actions'),
         ];
     }
 }

@@ -7,7 +7,7 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin\Sesau\Residencia\Formulario;
 
-class CrudFormComponent extends Component
+class CrudResidenciaFormComponent extends Component
 {
     use WithFileUploads;
 
@@ -18,13 +18,13 @@ class CrudFormComponent extends Component
     public $documento_provab, $documento_solicitacao_isencao, $documento_ampla_concorrencia;
 
 
-    protected $listeners = [
-        'editCrudForm' => 'edit',
-        'deleteCrudForm' => 'delete',
-        'selectedColumn',
-        'selectedTitulo',
-        'viewFormCrud'
-    ];
+    // protected $listeners = [
+    //     'editCrudForm' => 'edit',
+    //     'deleteCrudForm' => 'delete',
+    //     'selectedColumn',
+    //     'selectedTitulo',
+    //     'viewFormCrud'
+    // ];
 
     public function mount($dados, $formType, $title, $model, $form)
     {
@@ -33,7 +33,6 @@ class CrudFormComponent extends Component
         $this->data['celular'] = optional(Auth::user())->celular;
         $this->data['nome_social'] = optional(Auth::user())->nome_social;
         $this->data['email'] = optional(Auth::user())->email;
-        // $this->data = $dados;
         $this->formType = $formType;
         $this->title = $title;
         $this->model = $model;
@@ -48,7 +47,6 @@ class CrudFormComponent extends Component
 
     public function edit($data)
     {
-        // dd("edit");      
         try {
             $this->type = 'update';
             $this->data = $data;
@@ -59,17 +57,15 @@ class CrudFormComponent extends Component
 
     public function delete($data)
     {
-        // dd("delete");
         try {
             $this->type = 'delete';
             $this->data = $data;
-            //    dd($this->data['id']); 
         } catch (\Exception $ex) {
             session()->flash('message', 'Algo deu errado!!');
         }
     }
 
-    public function store()
+    private function store()
     {
         $this->validate(app($this->model)->rules);
         try {
@@ -88,7 +84,6 @@ class CrudFormComponent extends Component
 
     public function update()
     {
-        // dd("update");
         $this->validate(app($this->model)->rules);
         try {
             $this->data['user_id'] = Auth::id();
@@ -104,7 +99,6 @@ class CrudFormComponent extends Component
 
     public function destroy()
     {
-        // dd("destroy");
         try {
             $destroy = app($this->model)::find($this->data['id']);
             $destroy ? $destroy->delete() : false;

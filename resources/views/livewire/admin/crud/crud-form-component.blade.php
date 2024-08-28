@@ -5,6 +5,7 @@
     </div>
 
     <form wire:submit.prevent="{{ isset($data['id']) ? ($type == 'update' ? 'update' : 'destroy') : 'store' }}">
+
         @include($form)
         @if (isset($data['id']))
             @if ($type == 'update')
@@ -22,5 +23,5 @@
         <button data-bs-dismiss="modal" wire:click="$emit('closeFormCrud')" type="button" class="btn btn-secondary"><i
                 class="fas fa-times"></i> CANCELAR</button>
     </form>
+       
 </div>
-
