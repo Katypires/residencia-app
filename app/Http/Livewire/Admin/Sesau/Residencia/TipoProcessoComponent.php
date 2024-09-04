@@ -55,11 +55,10 @@ class TipoProcessoComponent extends Component
         TipoProcesso::updateOrCreate(
             ['user_id' => Auth::id()],
             [
-                'residencia_familia_comunidade' => $this->data['residencia_familia_comunidade'],
-                'residencia_medica_psiquiatria' => $this->data['residencia_medica_psiquiatria'],
-                'residencia_multiprofissional_saude_mental' => $this->data['residencia_multiprofissional_saude_mental'],
-                'residencia_multiprofissional_saude_familia' => $this->data['residencia_multiprofissional_saude_familia'],
+                'nome' => $this->categoria, 
+                'status' => true, 
             ]
         );
     }
+    
 }

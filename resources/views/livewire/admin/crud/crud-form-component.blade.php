@@ -20,8 +20,7 @@
             <button type="button" wire:click="store" type="submit" class="btn btn-primary"><i class="fa fa-save"></i>
                 SALVAR</button>
         @endif
-        <button data-bs-dismiss="modal" wire:click="$emit('closeFormCrud')" type="button" class="btn btn-secondary"><i
+        <button wire:click="$emit('closeFormCrud')" type="button" class="btn btn-secondary"><i
                 class="fas fa-times"></i> CANCELAR</button>
     </form>
-       
 </div>

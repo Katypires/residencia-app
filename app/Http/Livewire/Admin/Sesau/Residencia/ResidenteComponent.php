@@ -12,6 +12,7 @@ class ResidenteComponent extends Component
     public $openCadastro = true;
     public $dados = [];
     public $nome,$email,$cpf,$celular,$nome_social,$value,$categoriaSelecionada;
+    public $titulo;
 
     protected $listeners = [
         "openTipoProcesso" => "openTipoProcesso",
@@ -19,7 +20,6 @@ class ResidenteComponent extends Component
         "tipoProcesso" => "tipoProcesso",
         "openCategoria"=> "openCategoria",
     ];
-
     
     public function render()
     {

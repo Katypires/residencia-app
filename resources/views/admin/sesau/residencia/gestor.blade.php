@@ -35,7 +35,7 @@
     <livewire:admin.sesau.residencia.modal-component title="Tipo Conselhos" modalId="TipoConselho"
         form="admin.sesau.residencia.formularios.tipo_conselhos.form"
         model="App\Models\Admin\Sesau\Residencia\TipoConselho" />
-    <livewire:admin.sesau.residencia.modal-component title="Tipo Cotas" modalId="TipoCotas"
+    <livewire:admin.sesau.residencia.modal-component title="Tipo Cotas" modalId="TipoCotas".
         form="admin.sesau.residencia.formularios.tipo_cotas.form" model="App\Models\Admin\Sesau\Residencia\TipoCota" />
     <livewire:admin.sesau.residencia.modal-component title="Tipo Deficiências" modalId="TipoDeficiencias"
         form="admin.sesau.residencia.formularios.tipo_deficiencias.form"
@@ -43,6 +43,12 @@
     <livewire:admin.sesau.residencia.modal-component title="Tipo Processo" modalId="TipoProcessos"
         form="admin.sesau.residencia.formularios.tipo_processos.form"
         model="App\Models\Admin\Sesau\Residencia\TipoProcesso" />
+    {{-- <livewire:admin.sesau.residencia.modal-component title="Processo Vagas" modalId="ProcessoVagas"
+        form="admin.sesau.residencia.formularios.processo_vaga.form"
+        model="App\Models\Admin\Sesau\Residencia\ProcessoVaga" />
+    <livewire:admin.sesau.residencia.modal-component title="Processo Edital" modalId="ProcessoEdital"
+        form="admin.sesau.residencia.formularios.processo_edital.form"
+        model="App\Models\Admin\Sesau\Residencia\ProcessoEdital" /> --}}
 
     <div class="container mt-5">
         <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -57,6 +63,8 @@
             <livewire:admin.sesau.residencia.card-component title="Tipo Cotas" modalId="TipoCotas" />
             <livewire:admin.sesau.residencia.card-component title="Tipo Deficiências" modalId="TipoDeficiencias" />
             <livewire:admin.sesau.residencia.card-component title="Tipo Processo" modalId="TipoProcessos" />
+            {{-- <livewire:admin.sesau.residencia.card-component title="Processo Vagas" modalId="ProcessoVagas" />
+            <livewire:admin.sesau.residencia.card-component title="Processo Edital" modalId="ProcessoEdital" /> --}}
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

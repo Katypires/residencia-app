@@ -6,15 +6,14 @@ use App\Models\admin\sesau\residencia\Cedente;
 use Livewire\Component;
 use App\Models\Admin\Sesau\Residencia\TipoConselho;
 use App\Models\Admin\Sesau\Residencia\Candidato;
-
-
+use App\Models\Admin\Sesau\Residencia\TipoProcesso;
 
 class CrudFormComponent extends Component
 {
     public $model, $form, $title, $modalId, $type, $formType, $modal, $modelName;
     public $data = [];
     public $openForm = false;
-    public $tipoConselhos,$cedentes,$candidatos;
+    public $tipoConselhos,$cedentes,$candidatos,$tipoProcessos;
     protected $listeners = [
         'editCrudForm' => 'edit',
         'deleteCrudForm' => 'delete',
@@ -22,7 +21,6 @@ class CrudFormComponent extends Component
         'selectedTitulo',
         'viewFormCrud'
     ];
-
 
 
     public function mount($formType, $modal, $title, $model, $form)
@@ -33,6 +31,7 @@ class CrudFormComponent extends Component
         $this->model = $model;
         $this->form = $form;
         $this->tipoConselhos = TipoConselho::all();
+        $this->tipoProcessos = TipoProcesso::all();
         $this->cedentes = Cedente::all();
         $this->candidatos = Candidato::all();
     }

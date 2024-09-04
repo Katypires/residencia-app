@@ -13,4 +13,9 @@ class Inscricao extends Model
     public $rules=[
         'boleto'=> 'required',
     ];
+
+    // public function processo()
+    // {
+    //     return $this->belongsTo(Processo::class);
+    // }
 }

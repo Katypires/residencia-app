@@ -2,8 +2,8 @@
     <div class="form-floating col-12 mb-1">
         <select class="form-control" id="tipo_processo_id" wire:model.defer="data.tipo_processo_id">
             <option value="">Selecione o Tipo de Processo</option>
-            @foreach ($tipoConselhos as $tipoConselho)
-                <option value="{{ $tipoConselho->id }}">{{ $tipoConselho->nome }}</option>
+            @foreach ($tipoProcessos as $tipoProcesso)
+                <option value="{{ $tipoProcesso->id }}">{{ $tipoProcesso->nome }}</option>
             @endforeach
         </select>
         <label for="tipo_processo_id" class="form-label">Tipo de Processo</label>

@@ -8,7 +8,7 @@ use Kdion4891\LaravelLivewireTables\TableComponent;
 
 class FormularioTableComponent extends TableComponent
 {
-    public $per_page = 5;
+    public $per_page = 1;
     public $checkbox = false;
 
     public $data = [];

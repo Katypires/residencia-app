@@ -18,8 +18,8 @@ class CreateFormulariosTable extends Migration
             
             $table->unsignedBigInteger('candidato_id')->nullable();
             $table->foreign('candidato_id')->references('id')->on('residencia.candidatos')->onUpdate('cascade')->onDelete('set null');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            // $table->foreignId('user_id')->constrained('users');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');            
             $table->string('tipo_inscricao')->nullable();
             $table->string('nome')->nullable();
             $table->string('nome_social')->nullable();

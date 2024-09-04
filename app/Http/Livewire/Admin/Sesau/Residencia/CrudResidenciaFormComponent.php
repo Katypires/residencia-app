@@ -65,10 +65,11 @@ class CrudResidenciaFormComponent extends Component
         }
     }
 
-    private function store()
+    public function store()
     {
         $this->validate(app($this->model)->rules);
         try {
+            // dd(Auth::id()); 
             $this->data['user_id'] = Auth::id();
             app($this->model)::create($this->data);
             session()->flash('message', 'Criado com sucesso!!');
