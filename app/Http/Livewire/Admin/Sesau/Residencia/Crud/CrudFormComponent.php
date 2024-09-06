@@ -7,13 +7,15 @@ use Livewire\Component;
 use App\Models\Admin\Sesau\Residencia\TipoConselho;
 use App\Models\Admin\Sesau\Residencia\Candidato;
 use App\Models\Admin\Sesau\Residencia\TipoProcesso;
+use Illuminate\Support\Facades\Auth;
+
 
 class CrudFormComponent extends Component
 {
     public $model, $form, $title, $modalId, $type, $formType, $modal, $modelName;
     public $data = [];
     public $openForm = false;
-    public $tipoConselhos,$cedentes,$candidatos,$tipoProcessos;
+    public $tipoConselhos, $cedentes, $candidatos, $tipoProcessos;
     protected $listeners = [
         'editCrudForm' => 'edit',
         'deleteCrudForm' => 'delete',
@@ -23,10 +25,8 @@ class CrudFormComponent extends Component
     ];
 
 
-    public function mount($formType, $modal, $title, $model, $form)
+    public function mount($title, $model, $form)
     {
-        $this->formType = $formType;
-        $this->modal = $modal;
         $this->title = $title;
         $this->model = $model;
         $this->form = $form;
@@ -34,6 +34,11 @@ class CrudFormComponent extends Component
         $this->tipoProcessos = TipoProcesso::all();
         $this->cedentes = Cedente::all();
         $this->candidatos = Candidato::all();
+        $this->data['cpf'] = optional(Auth::user())->cpf;
+        $this->data['nome'] = optional(Auth::user())->nome;
+        $this->data['celular'] = optional(Auth::user())->celular;
+        $this->data['nome_social'] = optional(Auth::user())->nome_social;
+        $this->data['email'] = optional(Auth::user())->email;
     }
 
     public function render()
@@ -68,10 +73,12 @@ class CrudFormComponent extends Component
     {
         $this->validate(app($this->model)->rules);
         try {
+            // $this->data['user_id'] = Auth::user()->id;
             app($this->model)::create($this->data);
             session()->flash('message', 'Criado com sucesso!!');
             $this->resetFields();
             $this->emit('refreshCrudTable');
+            $this->emit('formSaved');
             $this->emit('closeFormCrud');
         } catch (\Exception $ex) {
             dd($ex);
@@ -117,6 +124,7 @@ class CrudFormComponent extends Component
         $this->resetErrorBag();
         $this->resetValidation();
         $this->data = [];
+        $this->data = ['user_id' => Auth::user()->id];
     }
 
     public function selectedColumn($value, $label)

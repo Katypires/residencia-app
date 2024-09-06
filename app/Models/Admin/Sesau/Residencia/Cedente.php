@@ -43,6 +43,11 @@ class Cedente extends Model
             Column::make('id')->searchable()->sortable(),
             Column::make('nome')->searchable()->sortable(),
             Column::make('cnpj')->searchable()->sortable(),
+            Column::make('banco')->searchable()->sortable(),
+            Column::make('agencia')->searchable()->sortable(),
+            Column::make('conta_corrente')->searchable()->sortable(),
+            Column::make('numero_convenio')->searchable()->sortable(),
+            Column::make('nosso_numero')->searchable()->sortable(),
             Column::make('action')->view('livewire.admin.crud.table.actions'),
         ];
     }

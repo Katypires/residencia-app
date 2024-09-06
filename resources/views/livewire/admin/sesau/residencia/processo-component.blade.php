@@ -1,6 +1,7 @@
 <div>
     {{-- MODAL EDITAL --}}
-    <div class="modal fade" id="{{$modalId}}Edital" tabindex="-1" aria-labelledby="{{$modalId}}Edital" aria-hidden="true">
+    <div class="modal fade" id="{{ $modalId }}Edital" tabindex="-1" aria-labelledby="{{ $modalId }}Edital"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -11,7 +12,7 @@
                     <ol class="list-group list-group-numbered">
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                <div class="fw-bold">{{$title}}</div>
+                                <div class="fw-bold">{{ $title }}</div>
                                 Processo seletivo para médicos e multiprofissionais
                                 Leia o edital.
                             </div>
@@ -27,21 +28,21 @@
             </div>
         </div>
     </div>
-    
+
     {{-- MODAL VAGAS --}}
-    <div class="modal fade" id="{{$modalId}}Vagas" tabindex="-1" aria-labelledby="{{$modalId}}Vagas" aria-hidden="true">
+    <div class="modal fade" id="{{ $modalId }}Vagas" tabindex="-1" aria-labelledby="{{ $modalId }}Vagas"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5">Processos seletivos - Vagas</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <ol class="list-group list-group-numbered">
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                <div class="fw-bold">{{$title}}</div>
+                                <div class="fw-bold">{{ $title }}</div>
                                 Processo seletivo para médicos e multiprofissionais
                             </div>
                             <span class="badge text-bg-primary rounded-pill">Vagas: 4</span>
@@ -60,13 +61,15 @@
             <h1 class="display-4 fw-bold lh-1 text-body-emphasis">{{ $title }}</h1>
             <p class="lead">{{ $texto }}</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold"
-                    wire:click="redirecionaInscricao('{{ $title }}')">
+                <button id="inscreverBtn" type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold"
+                    wire:click="$emit('showInscricaoForm')">
                     <i class="fas fa-pencil-alt"></i> Inscrever-se
                 </button>
-                <button data-bs-toggle="modal" data-bs-target="#{{$modalId}}Edital" type="button" class="btn btn-outline-secondary btn-lg px-4"><i class="fas fa-file-alt"></i>
+                <button data-bs-toggle="modal" data-bs-target="#{{ $modalId }}Edital" type="button"
+                    class="btn btn-outline-secondary btn-lg px-4"><i class="fas fa-file-alt"></i>
                     Edital</button>
-                <button data-bs-toggle="modal" data-bs-target="#{{$modalId}}Vagas" type="button" class="btn btn-outline-secondary btn-lg px-4"><i class="fas fa-briefcase"></i>
+                <button data-bs-toggle="modal" data-bs-target="#{{ $modalId }}Vagas" type="button"
+                    class="btn btn-outline-secondary btn-lg px-4"><i class="fas fa-briefcase"></i>
                     Vagas</button>
             </div>
         </div>

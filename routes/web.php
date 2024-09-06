@@ -26,8 +26,8 @@ Route::get('/inicial', function () {
     return view('admin.sesau.residencia.inicial');
 })->middleware('auth');
 
-Route::get('/inicial2', function () {
-    return view('admin.sesau.residencia.inicial2');
+Route::get('/testes', function () {
+    return view('admin.sesau.residencia.testes');
 });
 
 Route::get('/gestor', function () {

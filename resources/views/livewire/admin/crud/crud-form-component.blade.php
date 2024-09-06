@@ -4,6 +4,7 @@
         @include('livewire.admin.crud.table.message')
     </div>
 
+    <h3 class="text-center">{{$title}}</h3>
     <form wire:submit.prevent="{{ isset($data['id']) ? ($type == 'update' ? 'update' : 'destroy') : 'store' }}">
 
         @include($form)

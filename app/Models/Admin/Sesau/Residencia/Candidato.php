@@ -32,6 +32,11 @@ class Candidato extends Model
         ];
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public static function columns_modal_card()
     {
         return [

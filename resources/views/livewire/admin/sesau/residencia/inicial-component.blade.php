@@ -188,75 +188,9 @@
                     d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z">
                 </path>
             </symbol>
-            <symbol id="check2" viewBox="0 0 16 16">
-                <path
-                    d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
-            </symbol>
-            <symbol id="circle-half" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
-            </symbol>
-            <symbol id="moon-stars-fill" viewBox="0 0 16 16">
-                <path
-                    d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
-                <path
-                    d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
-            </symbol>
-            <symbol id="sun-fill" viewBox="0 0 16 16">
-                <path
-                    d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
-            </symbol>
-            <symbol id="x-circle-fill" viewBox="0 0 16 16">
-                <path
-                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
-            </symbol>
         </svg>
+
         <main class="d-flex">
-            {{-- MODAL EDITAIS(SIDEBAR) --}}
-            <div class="modal fade" id="edital" tabindex="-1" aria-labelledby="editalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5">Editais</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <ol class="list-group list-group-numbered">
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">Residência</div>
-                                        Processo seletivo para médicos e multiprofissionais
-                                        Leia o edital.
-                                    </div>
-                                    <a href="" class="badge text-bg-danger rounded-pill"><i
-                                            class="fas fa-file-pdf"></i></a>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">Processo A</div>
-                                        Lorem ipsum dolor sit amet.
-                                        Leia o edital.
-                                    </div>
-                                    <a href="" class="badge text-bg-danger rounded-pill"><i
-                                            class="fas fa-file-pdf"></i></a>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">Processo B</div>
-                                        Lorem ipsum dolor sit amet.
-                                        Leia o edital.
-                                    </div>
-                                    <a href="" class="badge text-bg-danger rounded-pill"><i
-                                            class="fas fa-file-pdf"></i></a>
-                                </li>
-                            </ol>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             {{-- MODAL DE VAGAS(SIDEBAR) --}}
             <div class="modal fade" id="vagasModal" tabindex="-1" aria-labelledby="vagasModalLabel" aria-hidden="true">
@@ -271,24 +205,31 @@
                             <ol class="list-group list-group-numbered">
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
                                     <div class="ms-2 me-auto">
-                                        <div class="fw-bold">Residência</div>
-                                        Processo seletivo para médicos e multiprofissionais
+                                        <div class="fw-bold">Residência Médica em Familía e Comunidade</div>
+                                        Processo seletivo para residência
                                     </div>
-                                    <span class="badge text-bg-primary rounded-pill">Vagas: 4</span>
+                                    <span class="badge text-bg-primary rounded-pill">Vagas: numero_vagas</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
                                     <div class="ms-2 me-auto">
-                                        <div class="fw-bold">Processo A</div>
-                                        Processo A descrição
+                                        <div class="fw-bold">Residência Médica em Psiquiatria</div>
+                                        Processo seletivo para residência
                                     </div>
-                                    <span class="badge text-bg-primary rounded-pill">Vagas: 2</span>
+                                    <span class="badge text-bg-primary rounded-pill">Vagas: numero_vagas</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
                                     <div class="ms-2 me-auto">
-                                        <div class="fw-bold">Processo B</div>
-                                        Processo B descrição
+                                        <div class="fw-bold">Residência Multiprofissional em Saúde da Familía</div>
+                                        Processo seletivo para residência
                                     </div>
-                                    <span class="badge text-bg-primary rounded-pill">Vagas: 3</span>
+                                    <span class="badge text-bg-primary rounded-pill">Vagas: numero_vagas</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">Residência Multiprofissional em Saúde Mental</div>
+                                        Processo seletivo para residência
+                                    </div>
+                                    <span class="badge text-bg-primary rounded-pill">Vagas: numero_vagas</span>
                                 </li>
                             </ol>
                         </div>
@@ -351,27 +292,66 @@
                 </form>
             </div>
 
-            <div class="container my-2 mb-3 overflow-auto w-100 ">
-                <livewire:admin.sesau.residencia.processo-component title="Residência Médica em Familía e Comunidade"
-                    texto="Lorem ipsum dolor sit amet. Ut quisquam laboriosam qui alias iusto et nostrum illum ut sapiente iure eos quos consectetur sed dolorum nobis. Eos deleniti nostrum et galisum sunt ea voluptate quisquam id tenetur asperiores."
-                    modalId="residenciaMFC">
-                    <br>
-                    <br>
-                <livewire:admin.sesau.residencia.processo-component title="Residência Médica em Psiquiatria"
-                    texto="Lorem ipsum dolor sit amet. Ut quisquam laboriosam qui alias iusto et nostrumillum ut sapiente iure eos quos consectetur sed dolorum nobis. Eos deleniti nostrum et galisum sunt ea voluptate quisquam id tenetur asperiores."
-                    modalId="residenciaMP">
-                    <br>
-                    <br>
-                <livewire:admin.sesau.residencia.processo-component title="Residência Multiprofissional em Saúde da Família"
-                    texto="Lorem ipsum dolor sit amet. Ut quisquam laboriosam qui alias iusto et nostrumillum ut sapiente iure eos quos consectetur sed dolorum nobis. Eos deleniti nostrum et galisum sunt ea voluptate quisquam id tenetur asperiores."
-                    modalId="residenciaMSF">
-                    <br>
-                    <br>
-                <livewire:admin.sesau.residencia.processo-component title="Residência Multiprofissional em Saúde Mental"
-                    texto="Lorem ipsum dolor sit amet. Ut quisquam laboriosam qui alias iusto et nostrum illum ut sapiente iure eos quos consectetur sed dolorum nobis. Eos deleniti nostrum et galisum   sunt ea voluptate quisquam id tenetur asperiores."
-                    modalId="residenciaMS">
+            <div class="container my-2 mb-3 w-100">
+                @if ($showInscricaoForm)
+                <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="CandidatoForm" model="App\Models\Admin\Sesau\Residencia\Candidato" form="admin.sesau.residencia.formularios.candidatos.form">
+                <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="ExperienciaForm" model="App\Models\Admin\Sesau\Residencia\Experiencia" form="admin.sesau.residencia.formularios.experiencias.form">
+                <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="FormacaoForm" model="App\Models\Admin\Sesau\Residencia\Formacao" form="admin.sesau.residencia.formularios.formacoes.form">
+                <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="CedenteForm" model="App\Models\Admin\Sesau\Residencia\Cedente" form="admin.sesau.residencia.formularios.cedentes.form">
 
+                <div class="card p-4 mb-4">
+                    <h3 class="text-center">CandidatoTable</h3>
+                    <livewire:admin.sesau.residencia.crud.crud-table-component title="CandidatoTable" model="App\Models\Admin\Sesau\Residencia\Candidato">
+                </div>
+                <div class="card p-4 mb-4">
+                    <h3 class="text-center">CedenteTable</h3>
+                    <livewire:admin.sesau.residencia.crud.crud-table-component title="CedenteTable" model="App\Models\Admin\Sesau\Residencia\Cedente">
+                </div>
+                    {{-- @if ($currentForm)
+                        <div class="d-flex justify-content-center align-items-center vh-100">
+                            <div class="d-flex flex-column align-items-center w-100" style="max-width: 600px;">
+                                <div class="card p-3 bg-light border-dark mb-3">
+                                    <livewire:admin.sesau.residencia.crud.crud-form-component
+                                        key="{{ Str::random(5) }}"
+                                        :title="$currentForm['title']"
+                                        :model="$currentForm['model']"
+                                        :form="$currentForm['form']"
+                                        wire:click="handleFormSaved"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        <div class="alert alert-success">
+                            Todos os formulários foram preenchidos.
+                        </div>
+                    @endif --}}
+                @else
+                    {{-- mostrar os processos --}}
+                    <livewire:admin.sesau.residencia.processo-component title="Residência Médica em Familía e Comunidade"
+                        texto="Lorem ipsum dolor sit amet. Ut quisquam laboriosam qui alias iusto et nostrum illum ut sapiente iure eos quos consectetur sed dolorum nobis. Eos deleniti nostrum et galisum sunt ea voluptate quisquam id tenetur asperiores."
+                        modalId="residenciaMFC">
+                        <br>
+                        <br>
+                    <livewire:admin.sesau.residencia.processo-component title="Residência Médica em Psiquiatria"
+                        texto="Lorem ipsum dolor sit amet. Ut quisquam laboriosam qui alias iusto et nostrumillum ut sapiente iure eos quos consectetur sed dolorum nobis. Eos deleniti nostrum et galisum sunt ea voluptate quisquam id tenetur asperiores."
+                        modalId="residenciaMP">
+                        <br>
+                        <br>
+                    <livewire:admin.sesau.residencia.processo-component title="Residência Multiprofissional em Saúde da Família"
+                        texto="Lorem ipsum dolor sit amet. Ut quisquam laboriosam qui alias iusto et nostrumillum ut sapiente iure eos quos consectetur sed dolorum nobis. Eos deleniti nostrum et galisum sunt ea voluptate quisquam id tenetur asperiores."
+                        modalId="residenciaMSF">
+                        <br>
+                        <br>
+                    <livewire:admin.sesau.residencia.processo-component title="Residência Multiprofissional em Saúde Mental"
+                        texto="Lorem ipsum dolor sit amet. Ut quisquam laboriosam qui alias iusto et nostrum illum ut sapiente iure eos quos consectetur sed dolorum nobis. Eos deleniti nostrum et galisum   sunt ea voluptate quisquam id tenetur asperiores."
+                        modalId="residenciaMS">
+                        <br>
+                        <br>
+                @endif
             </div>
+            
+            
         </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>

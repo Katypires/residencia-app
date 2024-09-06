@@ -22,7 +22,7 @@ class CreateCandidatosTable extends Migration
             $table->string('email')->nullable();
             $table->string('cpf')->nullable();
             $table->boolean('status')->nullable();
-            
+
             $table->timestamps();
         });
     }

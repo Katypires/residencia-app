@@ -40,6 +40,4 @@ class Conselho extends Model
             Column::make('action')->view('livewire.admin.crud.table.actions'),
         ];
     }
-
-
 }

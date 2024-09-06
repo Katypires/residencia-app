@@ -46,57 +46,14 @@
             </div>
         </div>
     </header>
+
     <div class="card p-4 m-4 border-dark" style="background-color: rgb(169, 232, 251)">
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
 
-        {{-- @if ($openCategoria) --}}
-        <h2 class="text-center p-2">Escolha qual a sua categoria</h2>
-        <div class="row justify-content-center">
-            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                <div class="card text-white bg-primary border border-black">
-                    <div class="card-body text-center">
-                        <i class="fas fa-heartbeat h3"></i>
-                        <h5 class="card-title">Médico</h5>
-                        <p class="card-text">Inscreva-se nesta categoria</p>
-                        @if ($categoriaSelecionada === 'medico')
-                            <button type="button" wire:click="cancelarSelecao" class="btn btn-success">
-                                <i class="fas fa-check-circle"></i> Selecionado
-                            </button>
-                        @else
-                            <button type="button" wire:click="categoriaSelecionada('medico')" class="btn btn-success"
-                                @if ($categoriaSelecionada) disabled @endif>Escolher</button>
-                        @endif
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                <div class="card text-white bg-danger border border-black">
-                    <div class="card-body text-center">
-                        <i class="fas fa-heartbeat h3"></i>
-                        <h5 class="card-title">Multiprofissional</h5>
-                        <p class="card-text">Inscreva-se nesta categoria</p>
-                        @if ($categoriaSelecionada === 'multiprofissional')
-                            <button type="button" wire:click="cancelarSelecao" class="btn btn-success">
-                                <i class="fas fa-check-circle"></i> Selecionado
-                            </button>
-                        @else
-                            <button type="button" wire:click="categoriaSelecionada('multiprofissional')"
-                                class="btn btn-success"
-                                @if ($categoriaSelecionada) disabled @endif>Escolher</button>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button type="button" class="btn btn-success mx-auto p-2" wire:click="openForm" style="max-width: 500px;">
-            <i class="fas fa-check-circle"></i> Confirmar
-        </button>
-        {{-- @endif
-        @if ($openForm) --}}
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-md-12">
                 <div class="card p-2 mb-4 bg-light border-dark">
                     <livewire:admin.sesau.residencia.crud-residencia-form-component key="{{ Str::random(5) }}"
@@ -105,20 +62,46 @@
                         form="admin.sesau.residencia.formularios.formulario.form" :dados=$dados />
                 </div>
             </div>
+        </div> --}}
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card p-2 mb-4 bg-light border-dark">
+                    <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="Formulário Candidato" model="App\Models\Admin\Sesau\Residencia\Candidato" form="admin.sesau.residencia.formularios.candidatos.form"/>
+                </div>
+            </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card p-2 mb-4 bg-light border-dark">
+                    <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="Formulário Experiência" model="App\Models\Admin\Sesau\Residencia\Experiencia" form="admin.sesau.residencia.formularios.experiencias.form"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card p-2 mb-4 bg-light border-dark">
+                    <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="Formulário Formações" model="App\Models\Admin\Sesau\Residencia\Formacao" form="admin.sesau.residencia.formularios.formacoes.form"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card p-2 mb-4 bg-light border-dark">
+                    <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="Formulário Cedente" model="App\Models\Admin\Sesau\Residencia\Cendente" form="admin.sesau.residencia.formularios.formacoes.form"/>
+                </div>
+            </div>
+        </div>
+
         {{-- @endif
         @if ($openTipoProcesso) --}}
-        <h2 class="text-center p-2">Escolha o seu tipo de processo</h2>
-        @livewire('admin.sesau.residencia.tipo-processo-component', ['categoria' => $categoriaSelecionada])
-        <div class="text-center">
-            <button type="button" class="btn btn-success p-2" wire:click="openDadosFinais" style="max-width: 500px">
-                <i class="fas fa-check-circle"></i> Confirmar
-            </button>
-        </div>
         {{-- @endif
 
         @if ($openDadosFinais)  --}}
-        @livewire('admin.sesau.residencia.dados-finais-component', ['categoria' => $categoriaSelecionada])
+        {{-- @livewire('admin.sesau.residencia.dados-finais-component', ['categoria' => $categoriaSelecionada]) --}}
         {{-- @endif --}}
     </div>
     <div>
