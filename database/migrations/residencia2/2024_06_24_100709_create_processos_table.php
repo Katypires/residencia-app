@@ -23,6 +23,7 @@ class CreateProcessosTable extends Migration
             $table->foreign('cedente_id')->references('id')->on('residencia.cedentes')->onUpdate('cascade')->onDelete('set null');
 
             $table->string('nome')->nullable();
+            $table->string('valor')->nullable();
             $table->string('descricao')->nullable();
             $table->date('data_inicio')->nullable();
             $table->date('data_final')->nullable();

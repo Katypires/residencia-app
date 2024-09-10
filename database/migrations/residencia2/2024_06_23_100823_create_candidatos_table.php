@@ -21,6 +21,19 @@ class CreateCandidatosTable extends Migration
             $table->string('celular')->nullable();
             $table->string('email')->nullable();
             $table->string('cpf')->nullable();
+            $table->string('sexo')->nullable();  
+            $table->string('rg')->nullable();
+            $table->string('orgao_expedidor')->nullable();
+            $table->date('expedicao_rg')->nullable();
+            $table->string('pais_naturalidade')->nullable();  
+            $table->string('estado_civil')->nullable();  
+            $table->string('cep')->nullable();  
+            $table->string('cidade')->nullable();  
+            $table->string('estado')->nullable();  
+            $table->string('endereco')->nullable();  
+            $table->string('bairro')->nullable();  
+            $table->integer('numero')->nullable();  
+            $table->string('complemento')->nullable();
             $table->boolean('status')->nullable();
 
             $table->timestamps();

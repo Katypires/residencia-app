@@ -1,0 +1,31 @@
+php artisan make:livewire Admin/Sesau/Projeto/ProjetoComponent
+<button wire:click="$emit('eventoExemplo')">
+php artisan make:model Admin/Sesau/Projeto/Projeto -m
+
+----------ARRUMAR-----
+estado: select
+estado civil: select
+Endereco: tamanho 8
+Numero: tamanho 4
+Bairro: tamanho 4
+Complemento: tamanho 8
+Status: esconder
+Acrescentar o campo ocupacao_profissional STR
+Acrescentar o campo curriculo_lates STR
+
+CandidatoComponent ** Tabs * tab1 - candidato-form-component ------------tab2 - formacao-component 
+CandidatoFormComponent
+Tirar o CedenteForm do form
+FormacaoComponent
+FormacaoFormComponent
+FormacaoTableComponent
+-------------------------
+
+php artisan make:livewire Admin/Sesau/Residencia/Candidato/CandidatoComponent
+php artisan make:livewire Admin/Sesau/Residencia/Candidato/CandidatoFormComponent
+php artisan make:livewire Admin/Sesau/Residencia/Formacao/FormacaoComponent
+php artisan make:livewire Admin/Sesau/Residencia/Formacao/FormacaoFormComponent
+php artisan make:table Admin/Sesau/Residencia/Formacao/FormacaoTableComponent 
+
+
+

@@ -41,6 +41,14 @@
         @enderror
     </div>
 
+    <div class="form-floating col-12 mb-1">
+        <input type="text" class="form-control" id="valor" wire:model.defer="data.valor" placeholder="valor">
+        <label for="valor" class="form-label">Valor</label>
+        @error('data.valor')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
+
     <div class="form-floating col-6 mb-1">
         <input type="date" class="form-control" id="data_inicio" wire:model.defer="data.data_inicio">
         <label for="data_inicio" class="form-label">Data de Início</label>

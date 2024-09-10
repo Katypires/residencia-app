@@ -294,19 +294,15 @@
 
             <div class="container my-2 mb-3 w-100">
                 @if ($showInscricaoForm)
-                <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="CandidatoForm" model="App\Models\Admin\Sesau\Residencia\Candidato" form="admin.sesau.residencia.formularios.candidatos.form">
+                @include("livewire.admin.sesau.residencia.tabs.tabs")
+                {{-- <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="CandidatoForm" model="App\Models\Admin\Sesau\Residencia\Candidato" form="admin.sesau.residencia.formularios.candidatos.form">
                 <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="ExperienciaForm" model="App\Models\Admin\Sesau\Residencia\Experiencia" form="admin.sesau.residencia.formularios.experiencias.form">
-                <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="FormacaoForm" model="App\Models\Admin\Sesau\Residencia\Formacao" form="admin.sesau.residencia.formularios.formacoes.form">
-                <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="CedenteForm" model="App\Models\Admin\Sesau\Residencia\Cedente" form="admin.sesau.residencia.formularios.cedentes.form">
+                <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="FormacaoForm" model="App\Models\Admin\Sesau\Residencia\Formacao" form="admin.sesau.residencia.formularios.formacoes.form"> --}}
 
-                <div class="card p-4 mb-4">
+                {{-- <div class="card p-4 mb-4">
                     <h3 class="text-center">CandidatoTable</h3>
                     <livewire:admin.sesau.residencia.crud.crud-table-component title="CandidatoTable" model="App\Models\Admin\Sesau\Residencia\Candidato">
-                </div>
-                <div class="card p-4 mb-4">
-                    <h3 class="text-center">CedenteTable</h3>
-                    <livewire:admin.sesau.residencia.crud.crud-table-component title="CedenteTable" model="App\Models\Admin\Sesau\Residencia\Cedente">
-                </div>
+                </div> --}}
                     {{-- @if ($currentForm)
                         <div class="d-flex justify-content-center align-items-center vh-100">
                             <div class="d-flex flex-column align-items-center w-100" style="max-width: 600px;">
@@ -328,33 +324,24 @@
                     @endif --}}
                 @else
                     {{-- mostrar os processos --}}
-                    <livewire:admin.sesau.residencia.processo-component title="Residência Médica em Familía e Comunidade"
-                        texto="Lorem ipsum dolor sit amet. Ut quisquam laboriosam qui alias iusto et nostrum illum ut sapiente iure eos quos consectetur sed dolorum nobis. Eos deleniti nostrum et galisum sunt ea voluptate quisquam id tenetur asperiores."
-                        modalId="residenciaMFC">
-                        <br>
-                        <br>
-                    <livewire:admin.sesau.residencia.processo-component title="Residência Médica em Psiquiatria"
-                        texto="Lorem ipsum dolor sit amet. Ut quisquam laboriosam qui alias iusto et nostrumillum ut sapiente iure eos quos consectetur sed dolorum nobis. Eos deleniti nostrum et galisum sunt ea voluptate quisquam id tenetur asperiores."
-                        modalId="residenciaMP">
-                        <br>
-                        <br>
-                    <livewire:admin.sesau.residencia.processo-component title="Residência Multiprofissional em Saúde da Família"
-                        texto="Lorem ipsum dolor sit amet. Ut quisquam laboriosam qui alias iusto et nostrumillum ut sapiente iure eos quos consectetur sed dolorum nobis. Eos deleniti nostrum et galisum sunt ea voluptate quisquam id tenetur asperiores."
-                        modalId="residenciaMSF">
-                        <br>
-                        <br>
-                    <livewire:admin.sesau.residencia.processo-component title="Residência Multiprofissional em Saúde Mental"
-                        texto="Lorem ipsum dolor sit amet. Ut quisquam laboriosam qui alias iusto et nostrum illum ut sapiente iure eos quos consectetur sed dolorum nobis. Eos deleniti nostrum et galisum   sunt ea voluptate quisquam id tenetur asperiores."
-                        modalId="residenciaMS">
-                        <br>
-                        <br>
+                    @foreach($processos as $processo)
+                    <livewire:admin.sesau.residencia.processo-component 
+                        title="{{ $processo->nome }}"   
+                        texto="{{ $processo->descricao }}" 
+                        valor="{{ $processo->valor}}"
+                        data_inicio="{{ date('d/m/y', strtotime($processo->data_inicio)) }}"
+                        data_final="{{ date('d/m/y', strtotime($processo->data_final)) }}"
+                        data_vencimento="{{ date('d/m/y', strtotime($processo->data_vencimento)) }}"
+                        situacao="{{ $processo->situacao}}"
+                        tipo_processo="{{ $processo->tipoProcesso->nome}}"
+                        modalId="{{ $processo->id }}">
+                    <br>
+                    <br>
+                    @endforeach
                 @endif
             </div>
-            
-            
         </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
-
     </html>
 </div>

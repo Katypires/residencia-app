@@ -15,467 +15,315 @@
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
+    <fieldset disabled="disabled">
+        <div class="row">
+            <div class="form-floating mb-4 col-sm-12 col-md-4">
+                <input type="text" wire:model.prevent="data.nome" class="form-control">
+                <label for="nome">1 - Nome Completo*</label>
+            </div>
+            <div class="form-floating mb-4 col-sm-12 col-md-4">
+                <input type="text" wire:model.prevent="data.nome_social" class="form-control">
+                <label for="nomesocial">2 - Nome Social</label>
+            </div>
+            <div class="form-floating mb-4 col-sm-12 col-md-4">
+                <input type="text" id="cpf" wire:model.prevent="data.cpf" maxlength="11" class="form-control">
+                <label for="cpf">3 - CPF*</label>
+            </div>
 
-        html {
-            height: 100%;
-        }
+            <div class="form-floating mb-4 col-sm-12 col-md-6">
+                <input type="text" wire:model.prevent="data.celular" class="form-control">
+                <label for="celular">4 - Celular*</label>
+            </div>
+            <div class="form-floating mb-4 col-md-6">
+                <input type="text" wire:model.prevent="data.email" class="form-control">
+                <label for="email">5 - Email*</label>
+            </div>
+        </div>
+    </fieldset>
 
-        /*Background color*/
-        #grad1 {
-            background-color: : #9C27B0;
-            background-image: linear-gradient(120deg, #FF4081, #81D4FA);
-        }
+    <div class="row">
+        <div class="form-floating mb-4 col-md-3">
+            <input type="date" wire:model.prevent="data.data_nascimento" class="form-control">
+            <label for="data_nascimento">6 - Data de Nascimento*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <input type="number" wire:model.prevent="data.rg" class="form-control">
+            <label for="rg">7 - RG*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <input type="string" wire:model.prevent="data.orgao_expedidor" class="form-control">
+            <label for="orgaoexpedidor">8 - Orgão Expedidor*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <input type="date" wire:model.prevent="data.expedicao_rg" class="form-control">
+            <label for="expedicaorg">9 - Data expedição RG*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <input type="number" wire:model.prevent="data.crm" class="form-control">
+            <label for="crm">10 - CRM*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <select wire:model.prevent="data.crm_estado" class="form-select">
+                <option value="">--Selecione--</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+            </select>
+            <label for="crm_estado">11 - CRM - Estado*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <select wire:model.prevent="data.sexo" class="form-select">
+                <option value="">Selecione</option>
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+            </select>
+            <label for="select">12 - Sexo</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <input type="text" wire:model.prevent="data.pais_naturalidade" class="form-control">
+            <label for="pais_naturalidade">13 - Pais de Naturalidade*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <select wire:model.prevent="data.estado_civil" class="form-select">
+                <option value="">Selecione</option>
+                <option value="solteiro">Solteiro(a)</option>
+                <option value="casado">Casado(a)</option>
+                <option value="separado">Separado</option>
+                <option value="divorciado">Divorciado(a)</option>
+                <option value="viuvo">Viúvo(a)</option>
+            </select>
+            <label for="estadocivil">14 - Estado Civil*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <input type="text" wire:model.prevent="data.cep" class="form-control">
+            <label for="cep">15 - CEP*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <input type="text" wire:model.prevent="data.cidade" class="form-control">
+            <label for="cidade">16 - Cidade*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <select wire:model.prevent="data.estado" class="form-select">
+                <option value="">--Selecione--</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+            </select>
+            <label for="select">17 - Estado*</label>
+        </div>
 
-        /*form styles*/
-        #msform {
-            text-align: center;
-            position: relative;
-            margin-top: 20px;
-        }
-
-        #msform fieldset .form-card {
-            background: white;
-            border: 0 none;
-            border-radius: 0px;
-            box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
-            padding: 20px 40px 30px 40px;
-            box-sizing: border-box;
-            width: 94%;
-            margin: 0 3% 20px 3%;
-
-            /*stacking fieldsets above each other*/
-            position: relative;
-        }
-
-        #msform fieldset {
-            background: white;
-            border: 0 none;
-            border-radius: 0.5rem;
-            box-sizing: border-box;
-            width: 100%;
-            margin: 0;
-            padding-bottom: 20px;
-
-            /*stacking fieldsets above each other*/
-            position: relative;
-        }
-
-        /*Hide all except first fieldset*/
-        #msform fieldset:not(:first-of-type) {
-            display: none;
-        }
-
-        #msform fieldset .form-card {
-            text-align: left;
-            color: #9E9E9E;
-        }
-
-        #msform input,
-        #msform textarea {
-            padding: 0px 8px 4px 8px;
-            border: none;
-            border-bottom: 1px solid #ccc;
-            border-radius: 0px;
-            margin-bottom: 25px;
-            margin-top: 2px;
-            width: 100%;
-            box-sizing: border-box;
-            font-family: montserrat;
-            color: #2C3E50;
-            font-size: 16px;
-            letter-spacing: 1px;
-        }
-
-        #msform input:focus,
-        #msform textarea:focus {
-            -moz-box-shadow: none !important;
-            -webkit-box-shadow: none !important;
-            box-shadow: none !important;
-            border: none;
-            font-weight: bold;
-            border-bottom: 2px solid skyblue;
-            outline-width: 0;
-        }
-
-        /*Blue Buttons*/
-        #msform .action-button {
-            width: 100px;
-            background: skyblue;
-            font-weight: bold;
-            color: white;
-            border: 0 none;
-            border-radius: 0px;
-            cursor: pointer;
-            padding: 10px 5px;
-            margin: 10px 5px;
-        }
-
-        #msform .action-button:hover,
-        #msform .action-button:focus {
-            box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue;
-        }
-
-        /*Previous Buttons*/
-        #msform .action-button-previous {
-            width: 100px;
-            background: #616161;
-            font-weight: bold;
-            color: white;
-            border: 0 none;
-            border-radius: 0px;
-            cursor: pointer;
-            padding: 10px 5px;
-            margin: 10px 5px;
-        }
-
-        #msform .action-button-previous:hover,
-        #msform .action-button-previous:focus {
-            box-shadow: 0 0 0 2px white, 0 0 0 3px #616161;
-        }
-
-        /*Dropdown List Exp Date*/
-        select.list-dt {
-            border: none;
-            outline: 0;
-            border-bottom: 1px solid #ccc;
-            padding: 2px 5px 3px 5px;
-            margin: 2px;
-        }
-
-        select.list-dt:focus {
-            border-bottom: 2px solid skyblue;
-        }
-
-        /*The background card*/
-        .card {
-            z-index: 0;
-            border: none;
-            border-radius: 0.5rem;
-            position: relative;
-        }
-
-        /*FieldSet headings*/
-        .fs-title {
-            font-size: 25px;
-            color: #2C3E50;
-            margin-bottom: 10px;
-            font-weight: bold;
-            text-align: left;
-        }
-
-        /*progressbar*/
-        #progressbar {
-            margin-bottom: 30px;
-            overflow: hidden;
-            color: lightgrey;
-        }
-
-        #progressbar .active {
-            color: #000000;
-        }
-
-        #progressbar li {
-            list-style-type: none;
-            font-size: 12px;
-            width: 25%;
-            float: left;
-            position: relative;
-        }
-
-        /*Icons in the ProgressBar*/
-        #progressbar #account:before {
-            font-family: FontAwesome;
-            content: "\f023";
-        }
-
-        #progressbar #personal:before {
-            font-family: FontAwesome;
-            content: "\f007";
-        }
-
-        #progressbar #payment:before {
-            font-family: FontAwesome;
-            content: "\f09d";
-        }
-
-        #progressbar #confirm:before {
-            font-family: FontAwesome;
-            content: "\f00c";
-        }
-
-        /*ProgressBar before any progress*/
-        #progressbar li:before {
-            width: 50px;
-            height: 50px;
-            line-height: 45px;
-            display: block;
-            font-size: 18px;
-            color: #ffffff;
-            background: lightgray;
-            border-radius: 50%;
-            margin: 0 auto 10px auto;
-            padding: 2px;
-        }
-
-        /*ProgressBar connectors*/
-        #progressbar li:after {
-            content: '';
-            width: 100%;
-            height: 2px;
-            background: lightgray;
-            position: absolute;
-            left: 0;
-            top: 25px;
-            z-index: -1;
-        }
-
-        /*Color number of the step and the connector before it*/
-        #progressbar li.active:before,
-        #progressbar li.active:after {
-            background: skyblue;
-        }
-
-        /*Imaged Radio Buttons*/
-        .radio-group {
-            position: relative;
-            margin-bottom: 25px;
-        }
-
-        .radio {
-            display: inline-block;
-            width: 204;
-            height: 104;
-            border-radius: 0;
-            background: lightblue;
-            box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
-            box-sizing: border-box;
-            cursor: pointer;
-            margin: 8px 2px;
-        }
-
-        .radio:hover {
-            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .radio.selected {
-            box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
-        }
-
-        /*Fit image in bootstrap div*/
-        .fit-image {
-            width: 100%;
-            object-fit: cover;
-        }
-    </style>
-</head>
-
-<body style="background-color:#DDDDDD">
-    <!-- MultiStep Form -->
-    <div class="container-fluid" id="grad1">
-        <div class="row justify-content-center mt-0">
-            <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
-                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                    <h2><strong>Sign Up Your User Account</strong></h2>
-                    <p>Fill all form field to go to next step</p>
-                    <div class="row">
-                        <div class="col-md-12 mx-0">
-                            <form id="msform">
-                                <!-- progressbar -->
-                                <ul id="progressbar">
-                                    <li class="active" id="account"><strong>Account</strong></li>
-                                    <li id="personal"><strong>Personal</strong></li>
-                                    <li id="payment"><strong>Payment</strong></li>
-                                    <li id="confirm"><strong>Finish</strong></li>
-                                </ul>
-                                <!-- fieldsets -->
-                                <fieldset>
-                                    <div class="form-card">
-                                        <h2 class="fs-title">Account Information</h2>
-                                        <input type="email" name="email" placeholder="Email Id" />
-                                        <input type="text" name="uname" placeholder="UserName" />
-                                        <input type="password" name="pwd" placeholder="Password" />
-                                        <input type="password" name="cpwd" placeholder="Confirm Password" />
-                                    </div>
-                                    <input type="button" name="next" class="next action-button" value="Next Step" />
-                                </fieldset>
-                                <fieldset>
-                                    <div class="form-card">
-                                        <h2 class="fs-title">Personal Information</h2>
-                                        <input type="text" name="fname" placeholder="First Name" />
-                                        <input type="text" name="lname" placeholder="Last Name" />
-                                        <input type="text" name="phno" placeholder="Contact No." />
-                                        <input type="text" name="phno_2" placeholder="Alternate Contact No." />
-                                    </div>
-                                    <input type="button" name="previous" class="previous action-button-previous"
-                                        value="Previous" />
-                                    <input type="button" name="next" class="next action-button" value="Next Step" />
-                                </fieldset>
-                                <fieldset>
-                                    <div class="form-card">
-                                        <h2 class="fs-title">Payment Information</h2>
-                                        <div class="radio-group">
-                                            <div class='radio' data-value="credit"><img
-                                                    src="https://i.imgur.com/XzOzVHZ.jpg" width="200px" height="100px">
-                                            </div>
-                                            <div class='radio' data-value="paypal"><img
-                                                    src="https://i.imgur.com/jXjwZlj.jpg" width="200px" height="100px">
-                                            </div>
-                                            <br>
-                                        </div>
-                                        <label class="pay">Card Holder Name*</label>
-                                        <input type="text" name="holdername" placeholder="" />
-                                        <div class="row">
-                                            <div class="col-9">
-                                                <label class="pay">Card Number*</label>
-                                                <input type="text" name="cardno" placeholder="" />
-                                            </div>
-                                            <div class="col-3">
-                                                <label class="pay">CVC*</label>
-                                                <input type="password" name="cvcpwd" placeholder="***" />
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <label class="pay">Expiry Date*</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <select class="list-dt" id="month" name="expmonth">
-                                                    <option selected>Month</option>
-                                                    <option>January</option>
-                                                    <option>February</option>
-                                                    <option>March</option>
-                                                    <option>April</option>
-                                                    <option>May</option>
-                                                    <option>June</option>
-                                                    <option>July</option>
-                                                    <option>August</option>
-                                                    <option>September</option>
-                                                    <option>October</option>
-                                                    <option>November</option>
-                                                    <option>December</option>
-                                                </select>
-                                                <select class="list-dt" id="year" name="expyear">
-                                                    <option selected>Year</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <input type="button" name="previous" class="previous action-button-previous"
-                                        value="Previous" />
-                                    <input type="button" name="make_payment" class="next action-button"
-                                        value="Confirm" />
-                                </fieldset>
-                                <fieldset>
-                                    <div class="form-card">
-                                        <h2 class="fs-title text-center">Success !</h2>
-                                        <br><br>
-                                        <div class="row justify-content-center">
-                                            <div class="col-3">
-                                                <img src="https://img.icons8.com/color/96/000000/ok--v2.png"
-                                                    class="fit-image">
-                                            </div>
-                                        </div>
-                                        <br><br>
-                                        <div class="row justify-content-center">
-                                            <div class="col-7 text-center">
-                                                <h5>You Have Successfully Signed Up</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </div>
-                    </div>
+        <div class="form-floating mb-4 col-md-3">
+            <input type="text" wire:model.prevent="data.endereco" class="form-control">
+            <label for="estado">18 - Endereço*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <input type="text" wire:model.prevent="data.bairro" class="form-control">
+            <label for="bairro">19 - Bairro*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <input type="number" wire:model.prevent="data.numero" class="form-control">
+            <label for="numero">20 - Numero*</label>
+        </div>
+        <div class="form-floating mb-4 col-12">
+            <input type="text" wire:model.prevent="data.complemento" class="form-control">
+            <label for="complemento">21 - Complemento</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <input type="text" wire:model.prevent="data.instituicao_graduacao" class="form-control">
+            <label for="instituicao_graduacao">22 - Instituição onde obteve a graduação*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <input type="text" wire:model.prevent="data.ano_conclusao" class="form-control">
+            <label for="conclusao">23 - Ano de conclusão*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <input type="text" wire:model.prevent="data.cidade_instituicao" class="form-control">
+            <label for="cidade_instituicao">24 - Cidade da instituição*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <select wire:model.prevent="data.estado_instituicao" class="form-select">
+                <option value="">--Selecione--</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+            </select>
+            <label for="estado_instituicao">25 - Estado da Instituição*</label>
+        </div>
+        <div class="form-floating mb-4 col-md-3">
+            <input type="text" wire:model.prevent="data.ocupacao_profissao" class="form-control">
+            <label for="ocupacao_profissao">26 - Ocupação/Profissão*</label>
+        </div>
+        <div class="form-floating mb-4 col-12">
+            <input type="text" wire:model.prevent="data.curriculo" class="form-control">
+            <label for="curriculo">27 - Currículo Lattes</label>
+        </div>
+        <div class="form-floating mb-3 col-12">
+            <h6 class="mb-3">28 - Possui PROVAB*</h6>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" wire:model.prevent="data.provab" type="radio" value="1">
+                <label class="form-check-label">Sim</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" wire:model.prevent="data.provab" type="radio" value="0">
+                <label class="form-check-label">Não</label>
+            </div>
+            @if (!empty($data['provab']) && $data['provab'] == '1')
+                <div class="form-floating m-1 col-12">
+                    <input type="file" wire:model="data.documento_provab" class="form-control-file">
+                    @error('data.documento_provab')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
                 </div>
+            @endif
+        </div>
+
+        <div class="form-floating mb-4 col-12">
+            <select wire:model.prevent="data.tipo_vaga" class="form-select">
+                <option value="">Selecione</option>
+                <option value="negro">a. Negro</option>
+                <option value="indio">b. Índio</option>
+                <option value="pessoa_deficiente">c. Pessoa com deficiência</option>
+                <option value="ampla_concorrencia">d. Ampla Concorrência</option>
+            </select>
+            <label for="tipo_vaga">29 - Vaga para*</label>
+            @if (!empty($data['tipo_vaga']) && $data['tipo_vaga'] == 'ampla_concorrencia')
+                <div class="form-floating m-2 col-12">
+                    <input type="file" wire:model="data.documento_ampla_concorrencia" class="form-control-file"
+                        id="documentoAmplaConcorrencia">
+                    @error('data.documento_ampla_concorrencia')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
+                </div>
+            @endif
+        </div>
+
+        <div class="form-floating mb-4 col-12">
+            <h6 class="mb-3">30 - Leitura do Edital</h6>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" wire:model.prevent="data.leitura_edital" type="radio"
+                    name="inlineRadioOptions" id="inlineRadio1" value="true">
+                <label class="form-check-label" for="inlineRadio1">Sim</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" wire:model.prevent="data.leitura_edital" type="radio"
+                    name="inlineRadioOptions" id="inlineRadio2" value="false">
+                <label class="form-check-label" for="inlineRadio2">Não</label>
+            </div>
+        </div>
+
+        <div class="form-floating mb-3 col-12">
+            <h6 class="mb-3">31 - Solicitação de Isenção de Inscrição</h6>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" wire:model.prevent="data.solicitacao_isencao" type="radio"
+                    name="inlineRadioOptions" id="inlineRadio1" value="1">
+                <label class="form-check-label" for="inlineRadio1">Sim</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" wire:model.prevent="data.solicitacao_isencao" type="radio"
+                    name="inlineRadioOptions" id="inlineRadio2" value="0">
+                <label class="form-check-label" for="inlineRadio2">Não</label>
+            </div>
+            @if (!empty($data['solicitacao_isencao']) && $data['solicitacao_isencao'] == '1')
+                <div class="form-floating m-1 col-12">
+                    <input type="file" wire:model="data.documento_solicitacao_isencao" class="form-control-file">
+                    @error('data.documento_solicitacao_isencao')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
+                </div>
+            @endif
+        </div>
+
+        <div class="form-floating mb-4 col-12">
+            <h6 class="mb-4">32 - Termo de Aceitação</h6>
+            <p><strong>a. O candidato requer a inscrição para este ato e declara estar ciente e de acordo com as normas
+                    do
+                    mesmo constantes no Edital ANEXO e que os dados aqui registrados são expressão da verdade. Acompanhe
+                    as
+                    informações sobre residência, editais, avisos, listas de resultados, etc. pelo site da Prefeitura
+                    Municipal de Campo Grande.</strong></p>
+            <div class="form-check form-switch">
+                <input type="checkbox" wire:model="data.termo_aceitacao" id="termo_aceitacao"
+                    class="form-check-input">
+                <label for="termo_aceitacao" class="form-check-label">Aceitar</label>
+                @error('status')
+                    <span class="error">{{ $message }}</span>
+                @enderror
             </div>
         </div>
     </div>
-    </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(document).ready(function() {
-
-            var current_fs, next_fs, previous_fs; //fieldsets
-            var opacity;
-
-            $(".next").click(function() {
-
-                current_fs = $(this).parent();
-                next_fs = $(this).parent().next();
-
-                //Add Class Active
-                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
-                //show the next fieldset
-                next_fs.show();
-                //hide the current fieldset with style
-                current_fs.animate({
-                    opacity: 0
-                }, {
-                    step: function(now) {
-                        // for making fielset appear animation
-                        opacity = 1 - now;
-
-                        current_fs.css({
-                            'display': 'none',
-                            'position': 'relative'
-                        });
-                        next_fs.css({
-                            'opacity': opacity
-                        });
-                    },
-                    duration: 600
-                });
-            });
-
-            $(".previous").click(function() {
-
-                current_fs = $(this).parent();
-                previous_fs = $(this).parent().prev();
-
-                //Remove class active
-                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-
-                //show the previous fieldset
-                previous_fs.show();
-
-                //hide the current fieldset with style
-                current_fs.animate({
-                    opacity: 0
-                }, {
-                    step: function(now) {
-                        // for making fielset appear animation
-                        opacity = 1 - now;
-
-                        current_fs.css({
-                            'display': 'none',
-                            'position': 'relative'
-                        });
-                        previous_fs.css({
-                            'opacity': opacity
-                        });
-                    },
-                    duration: 600
-                });
-            });
-
-            $('.radio-group .radio').click(function() {
-                $(this).parent().find('.radio').removeClass('selected');
-                $(this).addClass('selected');
-            });
-
-            $(".submit").click(function() {
-                return false;
-            })
-
-        });
-    </script>
 </body>
 
 </html>

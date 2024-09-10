@@ -3,11 +3,13 @@
 namespace App\Http\Livewire\Admin\Sesau\Residencia;
 
 use Livewire\Component;
+use App\Models\Admin\Sesau\Residencia\Processo;
 
 class InicialComponent extends Component
 {
     public $showInscricaoForm = false;
     public $currentFormIndex = 0;
+    public $processos;
     public $forms = [
         'candidato' => [
             'title' => 'Formulário Candidato',
@@ -31,7 +33,9 @@ class InicialComponent extends Component
         ],
     ];
 
-
+    public function mount(){
+        $this->processos = Processo::all();
+    }
     protected $listeners = [
         'showInscricaoForm',
         'formSaved' => 'handleFormSaved'

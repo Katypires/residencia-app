@@ -13,7 +13,7 @@ class Candidato extends Model
 {
     use HasFactory;
     protected $table = 'residencia.candidatos';
-    protected $fillable = ['nome', 'nome_social', 'celular', 'email', 'cpf', 'lattes', 'status'];
+    protected $fillable = ['nome', 'nome_social', 'celular', 'email', 'cpf', 'sexo', 'rg', 'orgao_expedidor', 'expedicao_rg', 'pais_naturalidade', 'estado_civil', 'cep', 'cidade', 'estado', 'endereco', 'bairro', 'numero', 'complemento', 'status',];
 
     public $rules=[
         'data.nome' => 'required|string|max:255',
