@@ -75,7 +75,7 @@
         @enderror
     </div>
     <div class="form-floating col-4 mb-3">
-        <input type="text" class="form-control" id="cep" wire:model.defer="data.cep" placeholder="cep">
+        <input type="text" class="form-control" id="cep" wire:model.defer="data.cep" wire:blur='get_endereco' placeholder="cep">
         <label for="cep" class="form-label">CEP:</label>
         @error('data.cep') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
@@ -126,19 +126,91 @@
         @error('data.endereco') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
     <div class="form-floating col-4 mb-3">
-        <input type="text" class="form-control" id="bairro" wire:model.defer="data.bairro" placeholder="bairro">
-        <label for="bairro" class="form-label">Bairro:</label>
-        @error('data.bairro') <span class="text-danger">{{ $message }}</span> @enderror
-    </div>
-    <div class="form-floating col-8 mb-3">
         <input type="text" class="form-control" id="numero" wire:model.defer="data.numero" placeholder="numero">
         <label for="numero" class="form-label">Numero:</label>
         @error('data.numero') <span class="text-danger">{{ $message }}</span> @enderror
+    </div>
+    <div class="form-floating col-8 mb-3">
+        <input type="text" class="form-control" id="bairro" wire:model.defer="data.bairro" placeholder="bairro">
+        <label for="bairro" class="form-label">Bairro:</label>
+        @error('data.bairro') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
     <div class="form-floating col-4 mb-3">
         <input type="text" class="form-control" id="complemento" wire:model.defer="data.complemento" placeholder="complemento">
         <label for="complemento" class="form-label">Complemento:</label>
         @error('data.complemento') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
-    <h6>adicionar ocupacao_profissional e curriculo_lattes depois</h6>
+    <div class="form-floating col-4 mb-3">
+        <input type="text" class="form-control" id="conselho" wire:model.defer="data.conselho" placeholder="XXX/CRM/UF">
+        <label for="conselho" class="form-label">Conselho(XXX/CRM/UF):</label>
+        @error('data.conselho') <span class="text-danger">{{ $message }}</span> @enderror
+    </div>
+    <div class="form-floating col-4 mb-3">
+        <input type="text" class="form-control" id="curriculo_lattes" wire:model.defer="data.curriculo_lattes" placeholder="curriculo_lattes">
+        <label for="curriculo_lattes" class="form-label">Curriculo Lattes:</label>
+        @error('data.curriculo_lattes') <span class="text-danger">{{ $message }}</span> @enderror
+    </div>
+    <div class="form-floating col-4 mb-3">
+        <input type="text" class="form-control" id="curso" wire:model.defer="data.curso" placeholder="curso">
+        <label for="curso" class="form-label">Curso:</label>
+        @error('data.curso') <span class="text-danger">{{ $message }}</span> @enderror
+    </div>
+    <div class="form-floating col-4 mb-3">
+        <input type="text" class="form-control" id="instituicao" wire:model.defer="data.instituicao" placeholder="instituicao">
+        <label for="instituicao" class="form-label">Instituição:</label>
+        @error('data.instituicao') <span class="text-danger">{{ $message }}</span> @enderror
+    </div>
+    <div class="form-floating col-4 mb-3">
+        <input type="text" class="form-control" id="pais_curso" wire:model.defer="data.pais_curso" placeholder="pais_curso">
+        <label for="pais_curso" class="form-label">País Curso:</label>
+        @error('data.pais_curso') <span class="text-danger">{{ $message }}</span> @enderror
+    </div>
+    <div class="form-floating col-4 mb-3">
+        <input type="text" class="form-control" id="cidade_curso" wire:model.defer="data.cidade_curso" placeholder="cidade_curso">
+        <label for="cidade_curso" class="form-label">Cidade Curso:</label>
+        @error('data.cidade_curso') <span class="text-danger">{{ $message }}</span> @enderror
+    </div>
+    <div class="form-floating col-8 mb-3">
+        <select class="form-control" id="estado_curso" wire:model.defer="data.estado_curso">
+            <option value="">--Selecione--</option>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+        </select>
+        <label for="estado_curso" class="form-label">Estado Curso:</label>
+        @error('estado_curso')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
+    <div class="form-check form-switch col-4 mb-3">
+        <label for="exterior" class="form-check-label">Formação no Exterior?</label>
+        <input type="checkbox" class="form-check-input" id="exterior" wire:model.defer="data.exterior">
+        @error('exterior')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
 </div>

@@ -30,15 +30,14 @@ class CrudFormComponent extends Component
         $this->title = $title;
         $this->model = $model;
         $this->form = $form;
-        $this->tipoConselhos = TipoConselho::all();
         $this->tipoProcessos = TipoProcesso::all();
         $this->cedentes = Cedente::all();
         $this->candidatos = Candidato::all();
-        $this->data['cpf'] = optional(Auth::user())->cpf;
-        $this->data['nome'] = optional(Auth::user())->nome;
-        $this->data['celular'] = optional(Auth::user())->celular;
-        $this->data['nome_social'] = optional(Auth::user())->nome_social;
-        $this->data['email'] = optional(Auth::user())->email;
+        // $this->data['cpf'] = optional(Auth::user())->cpf;
+        // $this->data['nome'] = optional(Auth::user())->nome;
+        // $this->data['celular'] = optional(Auth::user())->celular;
+        // $this->data['nome_social'] = optional(Auth::user())->nome_social;
+        // $this->data['email'] = optional(Auth::user())->email;
     }
 
     public function render()
@@ -97,6 +96,7 @@ class CrudFormComponent extends Component
             $this->emit('closeFormCrud');
             $this->resetFields();
         } catch (\Exception $ex) {
+            dd($ex);
             session()->flash('message', 'Algo deu errado!!');
         }
     }

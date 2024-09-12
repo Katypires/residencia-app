@@ -65,12 +65,12 @@
                 @if($situacao == 'andamento')
                 <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
                     <strong>Situação:</strong>
-                    <span>{{$situacao}}</span> 
+                    <span>{{ ucfirst(strtolower($situacao)) }}</span> 
                 </li>
                 @else
                 <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
                     <strong>Situação:</strong>
-                    <span>{{$situacao}}</span> 
+                    <span>{{ ucfirst(strtolower($situacao)) }}</span> 
                 </li>
                 @endif
                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -91,7 +91,7 @@
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <strong>Valor para Inscrição:</strong>
-                    <span>R$ {{$valor}},00</span> 
+                    <span>R$ {{$valor}}</span> 
                 </li>
             </ul>
     

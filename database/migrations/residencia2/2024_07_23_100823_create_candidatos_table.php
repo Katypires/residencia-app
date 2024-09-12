@@ -16,6 +16,9 @@ class CreateCandidatosTable extends Migration
         Schema::create('residencia.candidatos', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+
             $table->string('nome')->nullable();
             $table->string('nome_social')->nullable();
             $table->string('celular')->nullable();
@@ -34,6 +37,15 @@ class CreateCandidatosTable extends Migration
             $table->string('bairro')->nullable();  
             $table->integer('numero')->nullable();  
             $table->string('complemento')->nullable();
+            $table->string('curriculo_lattes')->nullable();  
+            $table->string('conselho')->nullable();
+            // $table->enum('tipo_formacao', ['graduacao', 'especializacao', 'mestrado', 'doutorado'])->default('graduacao');  
+            $table->string('curso')->nullable();
+            $table->string('instituicao')->nullable();
+            $table->string('pais_curso')->nullable();
+            $table->string('cidade_curso')->nullable();
+            $table->string('estado_curso')->nullable();
+            $table->boolean('exterior')->default(false);
             $table->boolean('status')->nullable();
 
             $table->timestamps();

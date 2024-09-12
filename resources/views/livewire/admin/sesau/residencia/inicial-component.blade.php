@@ -294,37 +294,10 @@
 
             <div class="container my-2 mb-3 w-100">
                 @if ($showInscricaoForm)
-                @include("livewire.admin.sesau.residencia.tabs.tabs")
-                {{-- <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="CandidatoForm" model="App\Models\Admin\Sesau\Residencia\Candidato" form="admin.sesau.residencia.formularios.candidatos.form">
-                <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="ExperienciaForm" model="App\Models\Admin\Sesau\Residencia\Experiencia" form="admin.sesau.residencia.formularios.experiencias.form">
-                <livewire:admin.sesau.residencia.crud.crud-form-component key="{{Str::random(5)}}" title="FormacaoForm" model="App\Models\Admin\Sesau\Residencia\Formacao" form="admin.sesau.residencia.formularios.formacoes.form"> --}}
-
-                {{-- <div class="card p-4 mb-4">
-                    <h3 class="text-center">CandidatoTable</h3>
-                    <livewire:admin.sesau.residencia.crud.crud-table-component title="CandidatoTable" model="App\Models\Admin\Sesau\Residencia\Candidato">
-                </div> --}}
-                    {{-- @if ($currentForm)
-                        <div class="d-flex justify-content-center align-items-center vh-100">
-                            <div class="d-flex flex-column align-items-center w-100" style="max-width: 600px;">
-                                <div class="card p-3 bg-light border-dark mb-3">
-                                    <livewire:admin.sesau.residencia.crud.crud-form-component
-                                        key="{{ Str::random(5) }}"
-                                        :title="$currentForm['title']"
-                                        :model="$currentForm['model']"
-                                        :form="$currentForm['form']"
-                                        wire:click="handleFormSaved"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    @else
-                        <div class="alert alert-success">
-                            Todos os formulários foram preenchidos.
-                        </div>
-                    @endif --}}
+                    @include("livewire.admin.sesau.residencia.tabs.tabs")
                 @else
                     {{-- mostrar os processos --}}
-                    @foreach($processos as $processo)
+                    @foreach($processos as $processo)   
                     <livewire:admin.sesau.residencia.processo-component 
                         title="{{ $processo->nome }}"   
                         texto="{{ $processo->descricao }}" 

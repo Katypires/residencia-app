@@ -13,14 +13,18 @@ class Candidato extends Model
 {
     use HasFactory;
     protected $table = 'residencia.candidatos';
-    protected $fillable = ['nome', 'nome_social', 'celular', 'email', 'cpf', 'sexo', 'rg', 'orgao_expedidor', 'expedicao_rg', 'pais_naturalidade', 'estado_civil', 'cep', 'cidade', 'estado', 'endereco', 'bairro', 'numero', 'complemento', 'status',];
-
+    protected $fillable = ['user_id', 'nome', 'nome_social', 'celular', 'email', 'cpf', 'sexo', 'rg', 'orgao_expedidor', 'expedicao_rg', 'pais_naturalidade', 'estado_civil', 'cep', 'cidade', 'estado', 'endereco', 'bairro', 'numero', 'complemento', 'curriculo_lattes', 'conselho', 'curso', 'instituicao', 'pais', 'cidade_curso', 'estado_curso', 'exterior', 'status',];
+    protected $hidden = [
+        'cpf',
+        'email',
+    ];
     public $rules=[
         'data.nome' => 'required|string|max:255',
         'data.nome_social' => 'nullable|string|max:255',
         'data.celular' => 'required|string|max:255',
         'data.email' => 'required|email|max:255',
-        'data.cpf' => 'required|string|size:11|unique:App\Models\Admin\Sesau\Residencia\Candidato,cpf',  
+        'data.cpf' => 'required|string|size:11|',  
+        // 'data.cpf' => 'required|string|size:11|unique:App\Models\Admin\Sesau\Residencia\Candidato,cpf',  
         'data.status' => 'nullable|boolean',
     ];
 

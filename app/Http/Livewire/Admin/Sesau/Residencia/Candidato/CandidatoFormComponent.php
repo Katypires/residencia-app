@@ -27,23 +27,45 @@ class CandidatoFormComponent extends Component
 
     public function mount($title, $model, $form)
     {
+        $candidato = Candidato::where('user_id', Auth::user()->id)->first();
         $this->title = $title;
         $this->model = $model;
         $this->form = $form;
-        $this->tipoConselhos = TipoConselho::all();
         $this->tipoProcessos = TipoProcesso::all();
         $this->cedentes = Cedente::all();
         $this->candidatos = Candidato::all();
-        $this->data['cpf'] = optional(Auth::user())->cpf;
-        $this->data['nome'] = optional(Auth::user())->nome;
-        $this->data['celular'] = optional(Auth::user())->celular;
-        $this->data['nome_social'] = optional(Auth::user())->nome_social;
-        $this->data['email'] = optional(Auth::user())->email;
+        $this->data['id'] = $candidato->id;
+        $this->data['cpf'] = $candidato->cpf;
+        $this->data['nome'] = $candidato->nome;
+        $this->data['celular'] = $candidato->celular;
+        $this->data['nome_social'] = $candidato->nome_social;
+        $this->data['email'] = $candidato->email;
     }
 
     public function render()
     {
         return view('livewire.admin.sesau.residencia.candidato.candidato-form-component');
+    }
+
+    public function get_endereco(){
+        if (!isset($this->data['cep']) || empty($this->data['cep'])) {
+            return;
+        }
+        $cep = $this->data['cep'];
+     
+        // formatar o cep removendo caracteres nao numericos
+        $cep = preg_replace("/[^0-9]/", "", $cep);
+        $url = "http://viacep.com.br/ws/$cep/xml/";
+
+        $endereco = $xml = simplexml_load_file($url);
+        $data = get_object_vars($endereco);
+        // dd($data);
+        $this->data['bairro'] = $data['bairro'];
+        $this->data['endereco'] = $data['logradouro'];
+        $this->data['cidade'] = $data['localidade'];
+        $this->data['estado'] = $data['uf'];
+        $this->data['pais'] = "BRASIL";
+        //return $xml;
     }
 
     public function edit($data)
@@ -97,6 +119,7 @@ class CandidatoFormComponent extends Component
             $this->emit('closeFormCrud');
             $this->resetFields();
         } catch (\Exception $ex) {
+            dd($ex);
             session()->flash('message', 'Algo deu errado!!');
         }
     }

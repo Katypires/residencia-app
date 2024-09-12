@@ -3,24 +3,15 @@
         @include('livewire.admin.crud.table.message')
     </div>
 
-    <h3 class="text-center">{{$title}}</h3>
-    <form wire:submit.prevent="{{ isset($data['id']) ? ($type == 'update' ? 'update' : 'destroy') : 'store' }}">
+    <h3 class="text-center">{{ $title }}</h3>
+    <form wire:submit.prevent="update">
 
         @include($form)
-        @if (isset($data['id']))
-            @if ($type == 'update')
-                <button type="submit" class="btn btn-primary "><i class="fas fa-edit"></i> ATUALIZAR</button>
-            @endif
-            @if ($type == 'delete')
-                <button type="submit"class="btn btn-danger "><i class="fas fa-times"></i>REMOVER</button>
-            @endif
-            @if ($type == 'view')
-            @endif
-        @else
-            <button type="button" wire:click="store" type="submit" class="btn btn-primary"><i class="fa fa-save"></i>
-                SALVAR</button>
-        @endif
-        <button wire:click="$emit('closeFormCrud')" type="button" class="btn btn-secondary"><i
-                class="fas fa-times"></i> CANCELAR</button>
+
+        <button type="button" wire:click="update" type="submit" class="btn btn-primary"><i class="fa fa-save"></i>
+            SALVAR</button>
+
+        <button wire:click="$emit('closeFormCrud')" type="button" class="btn btn-secondary"><i class="fas fa-times"></i>
+            CANCELAR</button>
     </form>
 </div>
