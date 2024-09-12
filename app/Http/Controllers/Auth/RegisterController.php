@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Sesau\Residencia\Candidato;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -138,13 +139,26 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        return User::create([
-            'nome' => $data['nome'],
-            'email' => $data['email'],
-            'nome_social' => $data['nome_social'] ?? NULL,
-            'cpf' => preg_replace('/[^0-9]/', '', $data['cpf']),
-            'celular' => $data['celular'],
-            'password' => Hash::make($data['password']),
-        ]);
+        try {
+            $user = User::create([
+                'nome' => $data['nome'],
+                'email' => $data['email'],
+                'nome_social' => $data['nome_social'] ?? NULL,
+                'cpf' => preg_replace('/[^0-9]/', '', $data['cpf']),
+                'celular' => $data['celular'],
+                'password' => Hash::make($data['password']),
+            ]);
+            $candidato = Candidato::create([
+                'user_id' => $user->id,
+                'nome' => $data['nome'],
+                'email' => $data['email'],
+                'nome_social' => $data['nome_social'] ?? NULL,
+                'cpf' => preg_replace('/[^0-9]/', '', $data['cpf']),
+                'celular' => $data['celular'],
+            ]);
+            return $user;
+        } catch (\Exception $ex) {
+            session()->flash('message', 'Algo deu errado!!');
+        }
     }
 }
