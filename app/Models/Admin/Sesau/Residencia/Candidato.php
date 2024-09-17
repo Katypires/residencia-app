@@ -18,15 +18,34 @@ class Candidato extends Model
         'cpf',
         'email',
     ];
-    public $rules=[
+    public $rules = [
         'data.nome' => 'required|string|max:255',
         'data.nome_social' => 'nullable|string|max:255',
-        'data.celular' => 'required|string|max:255',
+        'data.celular' => 'required|string|max:20',
         'data.email' => 'required|email|max:255',
-        'data.cpf' => 'required|string|size:11|',  
-        // 'data.cpf' => 'required|string|size:11|unique:App\Models\Admin\Sesau\Residencia\Candidato,cpf',  
+        'data.cpf' => 'required|string|size:11',
+        'data.sexo' => 'required|string|in:masculino,feminino,outro',
+        'data.rg' => 'required|string|max:20',
+        'data.orgao_expedidor' => 'required|string|max:50',
+        'data.expedicao_rg' => 'required|date',
+        'data.pais_naturalidade' => 'required|string|max:100',
+        'data.estado_civil' => 'required|string|in:solteiro,casado,divorciado,viuvo,outro',
+        'data.cep' => 'required|string|size:8',
+        'data.cidade' => 'required|string|max:100',
+        'data.estado' => 'required|string|max:2',
+        'data.endereco' => 'required|string|max:255',
+        'data.bairro' => 'required|string|max:100',
+        'data.complemento' => 'nullable|string|max:255',
+        'data.curriculo_lattes' => 'nullable|url',
+        'data.conselho' => 'nullable|string|max:255',
+        'data.curso' => 'required|string|max:255',
+        'data.instituicao' => 'required|string|max:255',
+        'data.cidade_curso' => 'required|string|max:100',
+        'data.estado_curso' => 'required|string|max:2',
+        'data.exterior' => 'required|boolean',
         'data.status' => 'nullable|boolean',
     ];
+
 
     public static function createdModel()
     {
@@ -52,5 +71,25 @@ class Candidato extends Model
     public function setNomeAttribute($value)
     {
         $this->attributes['nome'] = strtoupper($value);
+    }
+
+    public function setCidadeAttribute($value)
+    {
+        $this->attributes['cidade'] = strtoupper($value);
+    }
+
+    public function setEstadoAttribute($value)
+    {
+        $this->attributes['estado'] = strtoupper($value);
+    }
+
+    public function setEnderecoAttribute($value)
+    {
+        $this->attributes['endereco'] = strtoupper($value);
+    }
+
+    public function setBairroAttribute($value)
+    {
+        $this->attributes['bairro'] = strtoupper($value);
     }
 }

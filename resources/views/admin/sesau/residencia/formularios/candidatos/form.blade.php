@@ -130,12 +130,12 @@
         <label for="numero" class="form-label">Numero:</label>
         @error('data.numero') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
-    <div class="form-floating col-8 mb-3">
+    <div class="form-floating col-4 mb-3">
         <input type="text" class="form-control" id="bairro" wire:model.defer="data.bairro" placeholder="bairro">
         <label for="bairro" class="form-label">Bairro:</label>
         @error('data.bairro') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
-    <div class="form-floating col-4 mb-3">
+    <div class="form-floating col-8 mb-3">
         <input type="text" class="form-control" id="complemento" wire:model.defer="data.complemento" placeholder="complemento">
         <label for="complemento" class="form-label">Complemento:</label>
         @error('data.complemento') <span class="text-danger">{{ $message }}</span> @enderror
@@ -145,7 +145,7 @@
         <label for="conselho" class="form-label">Conselho(XXX/CRM/UF):</label>
         @error('data.conselho') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
-    <div class="form-floating col-4 mb-3">
+    <div class="form-floating col-8 mb-3">
         <input type="text" class="form-control" id="curriculo_lattes" wire:model.defer="data.curriculo_lattes" placeholder="curriculo_lattes">
         <label for="curriculo_lattes" class="form-label">Curriculo Lattes:</label>
         @error('data.curriculo_lattes') <span class="text-danger">{{ $message }}</span> @enderror
@@ -155,7 +155,7 @@
         <label for="curso" class="form-label">Curso:</label>
         @error('data.curso') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
-    <div class="form-floating col-4 mb-3">
+    <div class="form-floating col-8 mb-3">
         <input type="text" class="form-control" id="instituicao" wire:model.defer="data.instituicao" placeholder="instituicao">
         <label for="instituicao" class="form-label">Instituição:</label>
         @error('data.instituicao') <span class="text-danger">{{ $message }}</span> @enderror
@@ -170,7 +170,7 @@
         <label for="cidade_curso" class="form-label">Cidade Curso:</label>
         @error('data.cidade_curso') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
-    <div class="form-floating col-8 mb-3">
+    <div class="form-floating col-4 mb-3">
         <select class="form-control" id="estado_curso" wire:model.defer="data.estado_curso">
             <option value="">--Selecione--</option>
             <option value="AC">Acre</option>

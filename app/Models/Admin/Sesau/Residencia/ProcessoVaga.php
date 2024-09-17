@@ -15,7 +15,7 @@ class ProcessoVaga extends Model
     protected $fillable = ['processo_id', 'nome', 'descricao', 'imagem', 'valor', 'reserva', 'vagas', 'status'];
 
     public $rules=[
-        'nome'=> 'required',
+        'data.nome'=> 'required',
     ];
 
     public static function columns_modal_card()
@@ -26,6 +26,11 @@ class ProcessoVaga extends Model
             Column::make('processo_id')->searchable()->sortable(),
             Column::make('action')->view('livewire.admin.crud.table.actions'),
         ];
+    }
+
+    public function processo_tipo_vagas()
+    {
+        return $this->hasMany(ProcessoTipoVaga::class, 'processo_vaga_id', 'id');
     }
 }
 

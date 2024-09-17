@@ -1,6 +1,6 @@
 php artisan make:livewire Admin/Sesau/Projeto/ProjetoComponent
 <button wire:click="$emit('eventoExemplo')">
-php artisan make:model Admin/Sesau/Projeto/Projeto -m
+php artisan make:model Admin/Sesau/Projeto/NomeModel -m
 
 ----------ARRUMAR-----
 estado: select
@@ -26,6 +26,7 @@ php artisan make:livewire Admin/Sesau/Residencia/Candidato/CandidatoFormComponen
 php artisan make:livewire Admin/Sesau/Residencia/Formacao/FormacaoComponent
 php artisan make:livewire Admin/Sesau/Residencia/Formacao/FormacaoFormComponent
 php artisan make:table Admin/Sesau/Residencia/Formacao/FormacaoTableComponent 
+php artisan make:model Admin/Sesau/Residencia/TipoVaga -m
 
 
 

@@ -60,44 +60,50 @@
         <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
             <h1 class="display-4 fw-bold lh-1 text-body-emphasis text-center mb-3">{{ $title }}</h1>
             <p class="lead text-center mb-4">{{ $texto }}</p>
-    
+
             <ul class="list-group list-group-flush mb-4">
-                @if($situacao == 'andamento')
-                <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
-                    <strong>Situação:</strong>
-                    <span>{{ ucfirst(strtolower($situacao)) }}</span> 
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <strong>processo_id:</strong>
+                    <span>{{ $processo_id }}</span>
                 </li>
+                @if ($situacao == 'andamento')
+                    <li
+                        class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
+                        <strong>Situação:</strong>
+                        <span>{{ ucfirst(strtolower($situacao)) }}</span>
+                    </li>
                 @else
-                <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
-                    <strong>Situação:</strong>
-                    <span>{{ ucfirst(strtolower($situacao)) }}</span> 
-                </li>
+                    <li
+                        class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
+                        <strong>Situação:</strong>
+                        <span>{{ ucfirst(strtolower($situacao)) }}</span>
+                    </li>
                 @endif
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <strong>Tipo de Processo para:</strong>
-                    <span>{{$tipo_processo}}</span> 
+                    <span>{{ $tipo_processo }}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <strong>Data de Início:</strong>
-                    <span>{{$data_inicio}}</span> 
+                    <span>{{ $data_inicio }}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <strong>Data Final:</strong>
-                    <span>{{$data_final}}</span> 
+                    <span>{{ $data_final }}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <strong>Data de Vencimento de Pagamento:</strong>
-                    <span>{{$data_vencimento}}</span> 
+                    <span>{{ $data_vencimento }}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <strong>Valor para Inscrição:</strong>
-                    <span>R$ {{$valor}}</span> 
+                    <span>R$ {{ $valor }}</span>
                 </li>
             </ul>
-    
+
             <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-4 mb-lg-3">
                 <button id="inscreverBtn" type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold"
-                    wire:click="$emit('showInscricaoForm')">
+                    wire:click="$emit('showInscricaoForm', {{ $processo_id }}, {{ Auth::user()->id }})">
                     <i class="fas fa-pencil-alt"></i> Inscrever-se
                 </button>
                 <button data-bs-toggle="modal" data-bs-target="#{{ $modalId }}Edital" type="button"
@@ -108,7 +114,7 @@
                     Vagas</button>
             </div>
         </div>
-    
+
         <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
             <img src="{{ asset('bootstrap-themes.png') }}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"
                 width="700" height="500" loading="lazy">

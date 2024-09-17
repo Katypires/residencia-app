@@ -7,6 +7,9 @@ use Livewire\Component;
 use App\Models\Admin\Sesau\Residencia\TipoConselho;
 use App\Models\Admin\Sesau\Residencia\Candidato;
 use App\Models\Admin\Sesau\Residencia\TipoProcesso;
+use App\Models\Admin\Sesau\Residencia\ProcessoVaga;
+use App\Models\Admin\Sesau\Residencia\ProcessoTipoVaga;
+use App\Models\Admin\Sesau\Residencia\Processo;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -15,7 +18,7 @@ class CrudFormComponent extends Component
     public $model, $form, $title, $modalId, $type, $formType, $modal, $modelName;
     public $data = [];
     public $openForm = false;
-    public $tipoConselhos, $cedentes, $candidatos, $tipoProcessos;
+    public $tipoConselhos, $cedentes, $candidatos, $tipoProcessos,$processoVagas,$processoTipoVagas,$processos;
     protected $listeners = [
         'editCrudForm' => 'edit',
         'deleteCrudForm' => 'delete',
@@ -33,6 +36,9 @@ class CrudFormComponent extends Component
         $this->tipoProcessos = TipoProcesso::all();
         $this->cedentes = Cedente::all();
         $this->candidatos = Candidato::all();
+        $this->processoVagas = ProcessoVaga::all();
+        $this->processoTipoVagas = ProcessoTipoVaga::all();
+        $this->processos = Processo::all();
         // $this->data['cpf'] = optional(Auth::user())->cpf;
         // $this->data['nome'] = optional(Auth::user())->nome;
         // $this->data['celular'] = optional(Auth::user())->celular;
@@ -72,13 +78,11 @@ class CrudFormComponent extends Component
     {
         $this->validate(app($this->model)->rules);
         try {
-            // $this->data['user_id'] = Auth::user()->id;
             app($this->model)::create($this->data);
             session()->flash('message', 'Criado com sucesso!!');
             $this->resetFields();
             $this->emit('refreshCrudTable');
             $this->emit('formSaved');
-            $this->emit('closeFormCrud');
         } catch (\Exception $ex) {
             dd($ex);
             session()->flash('message', 'Algo deu errado!!');

@@ -40,6 +40,6 @@ Auth::routes();
 
 Route::post('/logout', function () {
     Auth::logout();
-    return redirect('/login'); // Redirecionar para a página inicial ou qualquer outra página desejada
+    return redirect('/'); // Redirecionar para a página inicial ou qualquer outra página desejada
 })->name('logout');
     

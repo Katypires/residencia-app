@@ -38,8 +38,29 @@ class CandidatoFormComponent extends Component
         $this->data['cpf'] = $candidato->cpf;
         $this->data['nome'] = $candidato->nome;
         $this->data['celular'] = $candidato->celular;
-        $this->data['nome_social'] = $candidato->nome_social;
         $this->data['email'] = $candidato->email;
+        $this->data['nome_social'] = $candidato->nome_social;
+        $this->data['sexo'] = $candidato->sexo;
+        $this->data['rg'] = $candidato->rg;
+        $this->data['orgao_expedidor'] = $candidato->orgao_expedidor;
+        $this->data['expedicao_rg'] = $candidato->expedicao_rg;
+        $this->data['pais_naturalidade'] = $candidato->pais_naturalidade;
+        $this->data['estado_civil'] = $candidato->estado_civil;
+        $this->data['cep'] = $candidato->cep;
+        $this->data['cidade'] = $candidato->cidade;
+        $this->data['estado'] = $candidato->estado;
+        $this->data['endereco'] = $candidato->endereco;
+        $this->data['bairro'] = $candidato->bairro;
+        $this->data['numero'] = $candidato->numero;
+        $this->data['complemento'] = $candidato->complemento;
+        $this->data['conselho'] = $candidato->conselho;
+        $this->data['curriculo_lattes'] = $candidato->curriculo_lattes;
+        $this->data['curso'] = $candidato->curso;
+        $this->data['instituicao'] = $candidato->instituicao;
+        $this->data['pais_curso'] = $candidato->pais_curso;
+        $this->data['cidade_curso'] = $candidato->cidade_curso;
+        $this->data['estado_curso'] = $candidato->estado_curso;
+        $this->data['exterior'] = $candidato->exterior;
     }
 
     public function render()
@@ -60,54 +81,12 @@ class CandidatoFormComponent extends Component
         $endereco = $xml = simplexml_load_file($url);
         $data = get_object_vars($endereco);
         // dd($data);
-        $this->data['bairro'] = $data['bairro'];
-        $this->data['endereco'] = $data['logradouro'];
-        $this->data['cidade'] = $data['localidade'];
-        $this->data['estado'] = $data['uf'];
-        $this->data['pais'] = "BRASIL";
+        $this->data['bairro'] = strtoupper($data['bairro']);
+        $this->data['endereco'] = strtoupper($data['logradouro']);
+        $this->data['cidade'] = strtoupper($data['localidade']);
+        $this->data['estado'] = strtoupper($data['uf']);
         //return $xml;
     }
-
-    public function edit($data)
-    {
-        // dd($data);
-        try {
-            $this->type = 'update';
-            $this->data = $data;
-        } catch (\Exception $ex) {
-            session()->flash('message', 'Algo deu errado!!');
-        }
-    }
-
-    public function delete($data)
-    {
-        // dd($data);
-        try {
-            $this->type = 'delete';
-            $this->data = $data;
-            //    dd($this->data['id']); 
-        } catch (\Exception $ex) {
-            session()->flash('message', 'Algo deu errado!!');
-        }
-    }
-
-    public function store()
-    {
-        $this->validate(app($this->model)->rules);
-        try {
-            // $this->data['user_id'] = Auth::user()->id;
-            app($this->model)::create($this->data);
-            session()->flash('message', 'Criado com sucesso!!');
-            $this->resetFields();
-            $this->emit('refreshCrudTable');
-            $this->emit('formSaved');
-            $this->emit('closeFormCrud');
-        } catch (\Exception $ex) {
-            dd($ex);
-            session()->flash('message', 'Algo deu errado!!');
-        }
-    }
-
 
     public function update()
     {
@@ -117,52 +96,18 @@ class CandidatoFormComponent extends Component
             session()->flash('message', 'Atualizado com sucesso!!');
             $this->emit('refreshCrudTable');
             $this->emit('closeFormCrud');
-            $this->resetFields();
+            $this->emit('nextTab');
         } catch (\Exception $ex) {
             dd($ex);
             session()->flash('message', 'Algo deu errado!!');
         }
     }
 
-    public function destroy()
-    {
-        try {
-            $destroy = app($this->model)::find($this->data['id']);
-            $destroy ? $destroy->delete() : false;
-            session()->flash('message', "Deletado com sucesso!!");
-            $this->emit('refreshCrudTable');
-            $this->emit('closeFormCrud');
-        } catch (\Exception $e) {
-            session()->flash('message', "Algo deu errado!!");
-        }
-    }
-
-    public function cancel()
-    {
-        $this->resetFields();
-    }
-
-    private function resetFields()
-    {
-        $this->resetErrorBag();
-        $this->resetValidation();
-        $this->data = [];
-        $this->data = ['user_id' => Auth::user()->id];
-    }
-
-    public function selectedColumn($value, $label)
-    {
-        $this->data[$label] = $value;
-    }
-
-    public function selectedTitulo($value, $label)
-    {
-        $this->data[$label] = $value;
-    }
-
-    public function viewFormCrud($data)
-    {
-        $this->type = 'view';
-        $this->data = $data;
-    }
+    // private function resetFields()
+    // {
+    //     $this->resetErrorBag();
+    //     $this->resetValidation();
+    //     $this->data = [];
+    //     $this->data = ['user_id' => Auth::user()->id];
+    // }
 }
