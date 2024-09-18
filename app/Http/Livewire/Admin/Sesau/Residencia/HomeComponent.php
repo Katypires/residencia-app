@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class HomeComponent extends Component
 {
-    public $vagas, $editais;
+    public $vagas, $editais,$processoTipoVagas;
     public function mount (){
         $this->vagas = ProcessoVaga::all();
         $this->editais = ProcessoEdital::all();

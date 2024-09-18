@@ -24,13 +24,18 @@ class ProcessoVaga extends Model
             Column::make('id')->searchable()->sortable(),
             Column::make('nome')->searchable()->sortable(),
             Column::make('processo_id')->searchable()->sortable(),
-            Column::make('action')->view('livewire.admin.crud.table.actions'),
+            Column::make('action')->view('livewire.admin.crud.table.actions-gestor'),
         ];
     }
 
     public function processo_tipo_vagas()
     {
         return $this->hasMany(ProcessoTipoVaga::class, 'processo_vaga_id', 'id');
+    }
+
+    public function Processo()
+    {
+        return $this->belongsTo(Processo::class);
     }
 }
 

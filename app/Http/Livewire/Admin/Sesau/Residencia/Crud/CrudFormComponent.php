@@ -78,7 +78,7 @@ class CrudFormComponent extends Component
     {
         $this->validate(app($this->model)->rules);
         try {
-            app($this->model)::create($this->data);
+            $this->model::create($this->data);
             session()->flash('message', 'Criado com sucesso!!');
             $this->resetFields();
             $this->emit('refreshCrudTable');
@@ -94,7 +94,7 @@ class CrudFormComponent extends Component
     {
         $this->validate(app($this->model)->rules);
         try {
-            app($this->model)::find($this->data['id'])->update($this->data);
+            $this->model::find($this->data['id'])->update($this->data);
             session()->flash('message', 'Atualizado com sucesso!!');
             $this->emit('refreshCrudTable');
             $this->emit('closeFormCrud');
@@ -108,7 +108,7 @@ class CrudFormComponent extends Component
     public function destroy()
     {
         try {
-            $destroy = app($this->model)::find($this->data['id']);
+            $destroy = $this->model::find($this->data['id']);
             $destroy ? $destroy->delete() : false;
             session()->flash('message', "Deletado com sucesso!!");
             $this->emit('refreshCrudTable');

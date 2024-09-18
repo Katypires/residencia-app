@@ -295,8 +295,8 @@
                     <livewire:admin.sesau.residencia.processo-component 
                         {{-- processo={{$processo}} --}}
                         processo_id="{{ $processo->id }}"
-                        title="{{ $processo->nome }}"   
-                        texto="{{ $processo->descricao }}" 
+                        processo_nome="{{ $processo->nome }}"   
+                        descricao="{{ $processo->descricao }}" 
                         valor="{{ $processo->valor}}"
                         data_inicio="{{ date('d/m/y', strtotime($processo->data_inicio)) }}"
                         data_final="{{ date('d/m/y', strtotime($processo->data_final)) }}"

@@ -65,7 +65,7 @@ class Candidato extends Model
         return [
             Column::make('id')->searchable()->sortable(),
             Column::make('nome')->searchable()->sortable(),
-            Column::make('action')->view('livewire.admin.crud.table.actions'),
+            Column::make('action')->view('livewire.admin.crud.table.actions-gestor'),
         ];
     }
     public function setNomeAttribute($value)

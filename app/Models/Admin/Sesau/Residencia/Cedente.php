@@ -48,7 +48,7 @@ class Cedente extends Model
             Column::make('conta_corrente')->searchable()->sortable(),
             Column::make('numero_convenio')->searchable()->sortable(),
             Column::make('nosso_numero')->searchable()->sortable(),
-            Column::make('action')->view('livewire.admin.crud.table.actions'),
+            Column::make('action')->view('livewire.admin.crud.table.actions-gestor'),
         ];
     }
     public function setNomeAttribute($value)

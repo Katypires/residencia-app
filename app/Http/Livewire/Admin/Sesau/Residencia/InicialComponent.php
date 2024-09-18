@@ -27,9 +27,9 @@ class InicialComponent extends Component
         return view('livewire.admin.sesau.residencia.inicial-component');
     }
 
-    public function showInscricaoForm($processo, $candidato_id)
+    public function showInscricaoForm($processo, $candidato_id,$processo_nome)
     {
         $this->showInscricaoForm = true;
-        $this->emit('inscricao', $processo,$candidato_id);
+        $this->emit('inscricao', $processo,$candidato_id,$processo_nome);
     }
 }

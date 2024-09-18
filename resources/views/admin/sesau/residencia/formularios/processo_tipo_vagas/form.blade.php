@@ -1,6 +1,6 @@
 <div class="row g-3" >
     <div class="form-floating col-12 mb-1">
-        <select class="form-control" id="tipo_processo_id" wire:model.defer="data.tipo_processo_id">
+        <select class="form-control" id="tipo_processo_id" wire:model.defer="data.processo_vaga_id">
             <option value="">Selecione o Processo Vaga</option>
             @foreach ($processoVagas as $processoVaga)
                 <option value="{{ $processoVaga->id }}">{{ $processoVaga->nome }}</option>

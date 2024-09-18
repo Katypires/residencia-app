@@ -36,9 +36,10 @@ class InscricaoComponent extends Component
         return view('livewire.admin.sesau.residencia.inscricao.inscricao-component');
     }
 
-    public function inscricao($processo_id,$candidato_id){
+    public function inscricao($processo_id,$candidato_id,$processo_nome){
         $this->candidato_id = $candidato_id;
         $this->processo_id = $processo_id;
+        $this->processo_nome = $processo_nome;
     }
 
     public function dadosInscricao($candidato_id, $processo_id, $formulario_id){
@@ -50,7 +51,7 @@ class InscricaoComponent extends Component
         $this->validate(app($this->model)->rules);
 
         try {
-            $inscricao = app($this->model)::updateOrCreate(
+            $inscricao = $this->model::updateOrCreate(
                 [
                     'candidato_id' => $this->candidato_id,
                     'processo_id' => $this->processo_id,

@@ -1,4 +1,5 @@
 <div>
+    <h3 class="text-center">{{$processo_nome}}</h3>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link {{ $currentTab === 'candidato' ? 'active' : '' }}" id="candidato-tab" type="button" wire:click="$set('currentTab', 'candidato')" role="tab" aria-controls="candidato" aria-selected="{{ $currentTab === 'candidato' ? 'true' : 'false' }}">

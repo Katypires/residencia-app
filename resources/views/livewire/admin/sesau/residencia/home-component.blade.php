@@ -21,29 +21,28 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <ol class="list-group list-group-numbered">
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">Residência</div>
-                                    Processo seletivo para médicos e multiprofissionais
+                        <div class="row justify-content-center">
+                            @if ($vagas->isEmpty())
+                                <div class="col-12">
+                                    <div class="alert alert-warning text-center">
+                                        Não há vagas disponíveis.
+                                    </div>
                                 </div>
-                                <span class="badge text-bg-primary rounded-pill">Vagas: 4</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">Processo A</div>
-                                    Processo A descrição
-                                </div>
-                                <span class="badge text-bg-primary rounded-pill">Vagas: 2</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">Processo B</div>
-                                    Processo B descrição
-                                </div>
-                                <span class="badge text-bg-primary rounded-pill">Vagas: 3</span>
-                            </li>
-                        </ol>
+                            @else
+                                @foreach ($vagas as $vaga)
+                                    <div class="col-12 mb-4"> 
+                                        <div class="card h-100">
+                                            <div class="card-header text-center">
+                                                Vaga para - {{ $vaga->Processo->nome }}
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="text-center">Vaga: {{ $vaga->nome }}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -57,39 +56,38 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5">Editais</h1>
+                        <h1 class="text-center modal-title fs-5">Editais</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <ol class="list-group list-group-numbered">
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">Residência</div>
-                                    Processo seletivo para médicos e multiprofissionais
-                                    Leia o edital.
+                        <div class="row justify-content-center">
+                            @if ($editais->isEmpty())
+                                <div class="col-12">
+                                    <div class="alert alert-warning text-center">
+                                        Não há editais disponíveis para este processo.
+                                    </div>
                                 </div>
-                                <a href="" class="badge text-bg-danger rounded-pill"><i
-                                        class="fas fa-file-pdf"></i></a>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">Processo A</div>
-                                    Lorem ipsum dolor sit amet.
-                                    Leia o edital.
-                                </div>
-                                <a href="" class="badge text-bg-danger rounded-pill"><i
-                                        class="fas fa-file-pdf"></i></a>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">Processo B</div>
-                                    Lorem ipsum dolor sit amet.
-                                    Leia o edital.
-                                </div>
-                                <a href="" class="badge text-bg-danger rounded-pill"><i
-                                        class="fas fa-file-pdf"></i></a>
-                            </li>
-                        </ol>
+                            @else
+                                @foreach ($editais as $edital)
+                                    <div class="col-12 mb-4"> 
+                                        <div class="card h-100">
+                                            <div class="card-header text-center">
+                                                Edital - {{ $edital->Processo->nome }}
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $edital->nome }}</h5>
+                                                <p class="card-text">Publicado em: {{ $edital->created_at }}</p>
+                                            </div>
+                                            <div class="card-footer text-center">
+                                                <a href="{{ $edital->arquivo }}" target="_blank" class="btn btn-danger">
+                                                    <i class="fas fa-file-pdf"></i> Ver PDF
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -98,7 +96,7 @@
             </div>
         </div>
         {{-- PRINCIPAL --}}
-            <div class="container col-xxl-8 px-4 py-5">
+        <div class="container col-xxl-8 px-4 py-5">
             <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
                 <div class="col-10 col-sm-8 col-lg-6">
                     <img src="{{ asset('bootstrap-themes.png') }}" class="d-block mx-lg-auto img-fluid"
@@ -122,7 +120,7 @@
                             class="btn btn-outline-secondary btn-lg px-4"><i class="fas fa-briefcase"></i>
                             Vagas</button>
                         <button type="button" class="btn btn-outline-secondary btn-lg px-4" data-bs-toggle="modal"
-                            data-bs-target="#edital"><i class="fas fa-file-alt"></i> Edital</button>
+                            data-bs-target="#edital"><i class="fas fa-file-alt"></i> Editais</button>
                     </div>
                 </div>
             </div>

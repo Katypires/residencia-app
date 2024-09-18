@@ -35,7 +35,7 @@ class FormularioFormComponent extends Component
         $this->formulario = Formulario::all();
         $processoVaga = ProcessoVaga::where('processo_id', $processo_id)->with('processo_tipo_vagas')->first();
         $this->processoVaga = $processoVaga;
-        $this->processoTipoVagas = $processoVaga->processo_tipo_vagas;
+        $this->processoTipoVagas = $processoVaga->processo_tipo_vagas ?? null;
         $this->data['tipo_vaga'] = $formulario->tipo_vaga ?? null;
         $this->data['leitura_edital'] = $formulario->leitura_edital ?? null;
         $this->data['termo_aceitacao'] = $formulario->termo_aceitacao ?? null;
@@ -51,7 +51,7 @@ class FormularioFormComponent extends Component
         $this->validate(app($this->model)->rules);
 
         try {
-            $formulario = app($this->model)::updateOrCreate(
+            $formulario = $this->model::updateOrCreate(
                 [
                     'candidato_id' => $this->candidato_id,
                     'processo_id' => $this->processo_id,

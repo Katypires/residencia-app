@@ -15,7 +15,7 @@ class ProcessoEdital extends Model
     protected $fillable = ['nome', 'processo_id', 'arquivo', 'status'];
 
     public $rules=[
-        'nome'=> 'required',
+        'data.nome'=> 'required',
     ];
 
     public static function columns_modal_card()
@@ -24,7 +24,13 @@ class ProcessoEdital extends Model
             Column::make('id')->searchable()->sortable(),
             Column::make('nome')->searchable()->sortable(),
             Column::make('processo_id')->searchable()->sortable(),
-            Column::make('action')->view('livewire.admin.crud.table.actions'),
+            Column::make('action')->view('livewire.admin.crud.table.actions-gestor'),
         ];
     }
+
+    public function Processo()
+    {
+        return $this->belongsTo(Processo::class);
+    }
+
 }

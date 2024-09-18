@@ -2,25 +2,38 @@
     {{-- MODAL EDITAL --}}
     <div class="modal fade" id="{{ $modalId }}Edital" tabindex="-1" aria-labelledby="{{ $modalId }}Edital"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5">Editais</h1>
+                    <h1 class="modal-title fs-5">Editais {{ $processo_nome }}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <ol class="list-group list-group-numbered">
-                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-                                <div class="fw-bold">{{ $title }}</div>
-                                Processo seletivo para médicos e multiprofissionais
-                                Leia o edital.
+                    <div class="row justify-content-center">
+                        @if ($editais->isEmpty())
+                            <div class="col-12">
+                                <div class="alert alert-warning text-center">
+                                    Não há editais disponíveis para este processo.
+                                </div>
                             </div>
-                            {{-- PASSAR INFORMAÇOES DO PDF POR PARAMETRO DPS --}}
-                            <a href="" class="badge text-bg-danger rounded-pill"><i
-                                    class="fas fa-file-pdf"></i></a>
-                        </li>
-                    </ol>
+                        @else
+                            @foreach ($editais as $edital)
+                                <div class="col-12 mb-4">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $edital->nome }}</h5>
+                                            <p class="card-text">Publicado em: {{ $edital->created_at }}</p>
+                                        </div>
+                                        <div class="card-footer text-center">
+                                            <a href="{{ $edital->arquivo }}" target="_blank" class="btn btn-danger">
+                                                <i class="fas fa-file-pdf"></i> Ver PDF
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -28,6 +41,9 @@
             </div>
         </div>
     </div>
+
+
+
 
     {{-- MODAL VAGAS --}}
     <div class="modal fade" id="{{ $modalId }}Vagas" tabindex="-1" aria-labelledby="{{ $modalId }}Vagas"
@@ -39,15 +55,37 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <ol class="list-group list-group-numbered">
-                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-                                <div class="fw-bold">{{ $title }}</div>
-                                Processo seletivo para médicos e multiprofissionais
+                    <div class="row justify-content-center">
+                        @if ($vagas->isEmpty())
+                            <div class="col-12">
+                                <div class="alert alert-warning text-center">
+                                    Não há vagas disponíveis.
+                                </div>
                             </div>
-                            <span class="badge text-bg-primary rounded-pill">Vagas: 4</span>
-                        </li>
-                    </ol>
+                        @else
+                            @foreach ($vagas as $vaga)
+                                <div class="col-12 mb-4">
+                                    <div class="card h-100">
+                                        <div class="card-header text-center">
+                                            {{ $vaga->Processo->nome }}
+                                        </div>
+                                        <div class="card-body">
+                                            <h4 class="text-center">Vaga</h4>
+                                            <h5 class="text-center">- {{ $vaga->nome }}</h5>
+                                            <h4 class="text-center">Tipo(s)</h4>
+                                            @if ($processoTipoVagas->isEmpty())
+                                                <h5 class="text-center">Nenhuma vaga disponível</h5>
+                                            @else
+                                                @foreach ($processoTipoVagas as $processoTipoVaga)
+                                                    <h5 class="text-center">- {{ $processoTipoVaga->nome }}</h5>
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -58,14 +96,10 @@
 
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
         <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-            <h1 class="display-4 fw-bold lh-1 text-body-emphasis text-center mb-3">{{ $title }}</h1>
-            <p class="lead text-center mb-4">{{ $texto }}</p>
+            <h1 class="display-4 fw-bold lh-1 text-body-emphasis text-center mb-3">{{ $processo_nome }}</h1>
+            <p class="lead text-center mb-4">{{ $descricao }}</p>
 
             <ul class="list-group list-group-flush mb-4">
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <strong>processo_id:</strong>
-                    <span>{{ $processo_id }}</span>
-                </li>
                 @if ($situacao == 'andamento')
                     <li
                         class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
@@ -103,9 +137,10 @@
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-4 mb-lg-3">
                 <button id="inscreverBtn" type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold"
-                    wire:click="$emit('showInscricaoForm', {{ $processo_id }}, {{ Auth::user()->id }})">
+                    wire:click="$emit('showInscricaoForm', {{ $processo_id }}, {{ Auth::user()->id }}, '{{ $processo_nome }}')">
                     <i class="fas fa-pencil-alt"></i> Inscrever-se
                 </button>
+
                 <button data-bs-toggle="modal" data-bs-target="#{{ $modalId }}Edital" type="button"
                     class="btn btn-outline-secondary btn-lg px-4"><i class="fas fa-file-alt"></i>
                     Edital</button>
