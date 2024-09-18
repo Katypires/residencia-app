@@ -33,7 +33,7 @@
                                     <div class="col-12 mb-4"> 
                                         <div class="card h-100">
                                             <div class="card-header text-center">
-                                                Vaga para - {{ $vaga->Processo->nome }}
+                                                {{ $vaga->Processo->nome }}
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="text-center">Vaga: {{ $vaga->nome }}</h5>

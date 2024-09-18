@@ -43,8 +43,6 @@
     </div>
 
 
-
-
     {{-- MODAL VAGAS --}}
     <div class="modal fade" id="{{ $modalId }}Vagas" tabindex="-1" aria-labelledby="{{ $modalId }}Vagas"
         aria-hidden="true">
