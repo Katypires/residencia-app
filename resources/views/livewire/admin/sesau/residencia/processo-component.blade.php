@@ -25,7 +25,7 @@
                                             <p class="card-text">Publicado em: {{ $edital->created_at }}</p>
                                         </div>
                                         <div class="card-footer text-center">
-                                            <a href="{{ $edital->arquivo }}" target="_blank" class="btn btn-danger">
+                                            <a href="{{ asset('storage/' . $edital->arquivo) }}" target="_blank" class="btn btn-danger">
                                                 <i class="fas fa-file-pdf"></i> Ver PDF
                                             </a>
                                         </div>

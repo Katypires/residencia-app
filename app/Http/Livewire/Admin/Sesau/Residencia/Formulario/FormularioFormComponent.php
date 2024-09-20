@@ -7,14 +7,17 @@ use App\Models\Admin\Sesau\Residencia\Formulario;
 use App\Models\Admin\Sesau\Residencia\ProcessoTipoVaga;
 use App\Models\Admin\Sesau\Residencia\ProcessoVaga;
 use Illuminate\Support\Facades\Auth;
-
+use Livewire\WithFileUploads;
 
 class FormularioFormComponent extends Component
 {
+    use WithFileUploads;
+    
     public $model, $form, $title, $modalId, $type, $formType, $modal, $modelName;
     public $data = [];
     public $tipoConselhos, $cedentes, $candidatos, $tipoProcessos, $formulario,$processoTipoVagas,$processoVaga;
     public $processo_id, $candidato_id;
+    public $documento_tipo_vaga, $documento_solicitacao_isencao;
 
     protected $listeners = [
         'editCrudForm' => 'edit',
@@ -51,6 +54,16 @@ class FormularioFormComponent extends Component
         $this->validate(app($this->model)->rules);
 
         try {
+            if ($this->documento_tipo_vaga) {
+                $path = $this->documento_tipo_vaga->store('documentos_tipo_vaga', 'public');
+                $this->data['documento_tipo_vaga'] = $path; 
+            }
+
+            if ($this->documento_solicitacao_isencao) {
+                $path = $this->documento_solicitacao_isencao->store('documentos_solicitacao_isencao', 'public');
+                $this->data['documento_solicitacao_isencao'] = $path; 
+            }
+
             $formulario = $this->model::updateOrCreate(
                 [
                     'candidato_id' => $this->candidato_id,
@@ -60,6 +73,7 @@ class FormularioFormComponent extends Component
                 ],
                 $this->data
             );
+            
             $this->emit('nextTab');
             $this->emit('dadosInscricao', $this->candidato_id, $this->processo_id, $formulario->id);
             session()->flash('message', 'Salvo com sucesso!!');

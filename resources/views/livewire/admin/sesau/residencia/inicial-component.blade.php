@@ -191,9 +191,7 @@
         </svg> --}}
 
         <main class="d-flex">
-
-            {{-- MODAL DE VAGAS(SIDEBAR) --}}
-            <div class="modal fade" id="vagasModal" tabindex="-1" aria-labelledby="vagasModalLabel" aria-hidden="true">
+            {{-- <div class="modal fade" id="vagasModal" tabindex="-1" aria-labelledby="vagasModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -238,26 +236,83 @@
                         </div>
                     </div>
                 </div>
+            </div> --}}
+            <div class="modal fade" id="inscricoesModal" tabindex="-1" aria-labelledby="inscricoesModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header border-0">
+                            <h1 class="modal-title fs-5">Minhas Inscrições</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            @if ($inscricoes->isEmpty())
+                                <div class="text-center my-5">
+                                    <p class="text-muted fs-4">Você ainda não fez nenhuma inscrição.</p>
+                                </div>
+                            @else
+                                <div class="row g-3">
+                                    @foreach ($inscricoes as $inscricao)
+                                        <div class="col-md-6">
+                                            <div class="card shadow-sm h-100">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-2 text-primary">Processo:
+                                                        {{ $inscricao->processo->nome }}</h5>
+                                                    <p class="card-text mb-2">
+                                                        <i class="fas fa-briefcase me-2"></i>
+                                                        Vaga para:
+                                                        <strong>{{ $inscricao->formulario->tipo_vaga ?? 'N/A' }}</strong>
+                                                    </p>
+                                                    <p class="card-text">
+                                                        <i class="fas fa-user-tag me-2"></i>
+                                                        Tipo da Vaga:
+                                                        <strong>{{ $inscricao->formulario && $inscricao->formulario->processoTipoVaga ? $inscricao->formulario->processoTipoVaga->nome : 'N/A' }}</strong>
+                                                    </p>
+                                                </div>
+                                                <div
+                                                    class="card-footer bg-light d-flex justify-content-between align-items-center">
+                                                    <span class="badge bg-success">Inscrito</span>
+                                                    <small class="text-muted">Data:
+                                                        {{ $inscricao->created_at->format('d/m/Y') }}</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                        </div>
+                        <div class="modal-footer border-0">
+                            <button type="button" class="btn btn-outline-secondary"
+                                data-bs-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            {{-- SIDEBAR --}}
             <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar" style="width: 280px;">
-                <a href="/inicial" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <a href="/inicial"
+                    class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <span class="fs-4">Processos PMCG</span>
                 </a>
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <button class="nav-link text-white btn btn-dark" aria-current="page">
-                            <i class="fa fa-home"></i>
-                            Inicio
-                        </button>
+                        <a href="" class="nav-link text-white btn btn-dark " aria-current="page"><i
+                                class="fa fa-home"></i>Inicio</a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <button data-bs-toggle="modal" data-bs-target="#vagasModal"
                             class="nav-link text-white btn btn-dark">
                             <i class="fas fa-briefcase"></i>
                             Vagas
+                        </button>
+                    </li> --}}
+                    <li>
+                        <button data-bs-toggle="modal" data-bs-target="#inscricoesModal"
+                            class="nav-link text-white btn btn-dark">
+                            <i class="fas fa-clipboard-check"></i>
+                            Inscrições
                         </button>
                     </li>
                     <li>
@@ -289,29 +344,26 @@
             </div>
             <div class="container my-2 mb-3 w-100">
                 @if ($showInscricaoForm)
-                    <livewire:admin.sesau.residencia.inscricao-component model="App\Models\Admin\Sesau\Residencia\Inscricao">
+                    <livewire:admin.sesau.residencia.inscricao-component
+                        model="App\Models\Admin\Sesau\Residencia\Inscricao">
                     @else
-                    @foreach($processos as $processo)   
-                    <livewire:admin.sesau.residencia.processo-component 
-                        {{-- processo={{$processo}} --}}
-                        processo_id="{{ $processo->id }}"
-                        processo_nome="{{ $processo->nome }}"   
-                        descricao="{{ $processo->descricao }}" 
-                        valor="{{ $processo->valor}}"
-                        data_inicio="{{ date('d/m/y', strtotime($processo->data_inicio)) }}"
-                        data_final="{{ date('d/m/y', strtotime($processo->data_final)) }}"
-                        data_vencimento="{{ date('d/m/y', strtotime($processo->data_vencimento)) }}"
-                        situacao="{{ $processo->situacao}}"
-                        tipo_processo="{{ $processo->tipoProcesso->nome}}"
-                        modalId="{{ $processo->id }}"
-                        >
-                    <br>
-                    <br>
-                    @endforeach
+                        @foreach ($processos as $processo)
+                            <livewire:admin.sesau.residencia.processo-component {{-- processo={{$processo}} --}}
+                                processo_id="{{ $processo->id }}" processo_nome="{{ $processo->nome }}"
+                                descricao="{{ $processo->descricao }}" valor="{{ $processo->valor }}"
+                                data_inicio="{{ date('d/m/y', strtotime($processo->data_inicio)) }}"
+                                data_final="{{ date('d/m/y', strtotime($processo->data_final)) }}"
+                                data_vencimento="{{ date('d/m/y', strtotime($processo->data_vencimento)) }}"
+                                situacao="{{ $processo->situacao }}"
+                                tipo_processo="{{ $processo->tipoProcesso->nome }}" modalId="{{ $processo->id }}">
+                                <br>
+                                <br>
+                        @endforeach
                 @endif
             </div>
         </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
+
     </html>
 </div>

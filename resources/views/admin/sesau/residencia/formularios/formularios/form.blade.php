@@ -13,7 +13,7 @@
     </div>
 
     <div class="form-floating mb-4 col-12">
-        <select wire:model.prevent="data.tipo_vaga" class="form-select">
+        <select wire:model="data.tipo_vaga" class="form-select">
             <option value="">Selecione</option>
             <option value="negro">a. Negro</option>
             <option value="indio">b. Índigena</option>
@@ -21,16 +21,19 @@
             <option value="ampla_concorrencia">d. Ampla Concorrência</option>
         </select>
         <label for="tipo_vaga">Vaga para*</label>
+
         @if (!empty($data['tipo_vaga']) && $data['tipo_vaga'] != 'ampla_concorrencia')
             <div class="form-floating m-2 col-12">
-                <input type="file" wire:model="data.documento_tipo_vaga" class="form-control-file"
+                <input type="file" wire:model="documento_tipo_vaga" class="form-control-file"
                     id="documentoAmplaConcorrencia">
-                @error('data.documento_tipo_vaga')
+                @error('documento_tipo_vaga')
                     <span class="error">{{ $message }}</span>
                 @enderror
             </div>
         @endif
     </div>
+
+
     <div class="form-floating mb-4 col-12">
         <h6 class="mb-3">Leitura do Edital</h6>
         <div class="form-check form-check-inline">
@@ -44,6 +47,7 @@
             <label class="form-check-label" for="inlineRadio2">Não</label>
         </div>
     </div>
+
     <div class="form-floating mb-3 col-12">
         <h6 class="mb-3">Solicitação de Isenção de Inscrição</h6>
         <div class="form-check form-check-inline">
@@ -58,13 +62,14 @@
         </div>
         @if (!empty($data['solicitacao_isencao']) && $data['solicitacao_isencao'] == '1')
             <div class="form-floating m-1 col-12">
-                <input type="file" wire:model="data.documento_solicitacao_isencao" class="form-control-file">
+                <input type="file" wire:model="documento_solicitacao_isencao" class="form-control-file">
                 @error('data.documento_solicitacao_isencao')
                     <span class="error">{{ $message }}</span>
                 @enderror
             </div>
         @endif
     </div>
+
     <div class="form-floating mb-4 col-12">
         <h6 class="mb-4">Termo de Aceitação</h6>
         <p><strong>a. O candidato requer a inscrição para este ato e declara estar ciente e de acordo com as normas

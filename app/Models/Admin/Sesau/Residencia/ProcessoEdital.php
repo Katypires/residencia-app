@@ -16,6 +16,7 @@ class ProcessoEdital extends Model
 
     public $rules=[
         'data.nome'=> 'required',
+        'data.arquivo' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
     ];
 
     public static function columns_modal_card()

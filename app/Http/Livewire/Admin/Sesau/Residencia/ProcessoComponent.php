@@ -21,7 +21,6 @@ class ProcessoComponent extends Component
     $this->vagas = ProcessoVaga::where('processo_id', $processo_id)->get();
     $processoVagas = ProcessoVaga::where('processo_id', $processo_id)->with('processo_tipo_vagas')->get();
     
-    // Unindo todas as tipo_vagas em uma única coleção
     $this->processoTipoVagas = $processoVagas->flatMap(function($vaga) {
         return $vaga->processo_tipo_vagas;
     });

@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-
+        
         {{-- MODAL EDITAIS --}}
         <div class="modal fade" id="edital" tabindex="-1" aria-labelledby="editalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">

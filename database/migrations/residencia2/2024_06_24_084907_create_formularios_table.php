@@ -33,7 +33,7 @@ class CreateFormulariosTable extends Migration
             $table->boolean('leitura_edital')->default(false);
             $table->boolean('termo_aceitacao')->default(false); 
             $table->boolean('solicitacao_isencao')->default(false); 
-            $table->string('documento_ampla_concorrencia')->nullable();
+            $table->string('documento_tipo_vaga')->nullable();
             $table->string('documento_solicitacao_isencao')->nullable();
             $table->string('key')->nullable()->unique();//candidato + processo
 

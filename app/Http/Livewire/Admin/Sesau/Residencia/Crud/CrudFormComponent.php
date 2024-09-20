@@ -11,14 +11,18 @@ use App\Models\Admin\Sesau\Residencia\ProcessoVaga;
 use App\Models\Admin\Sesau\Residencia\ProcessoTipoVaga;
 use App\Models\Admin\Sesau\Residencia\Processo;
 use Illuminate\Support\Facades\Auth;
+use Livewire\WithFileUploads;
 
 
 class CrudFormComponent extends Component
 {
+    use WithFileUploads;
+
     public $model, $form, $title, $modalId, $type, $formType, $modal, $modelName;
     public $data = [];
     public $openForm = false;
     public $tipoConselhos, $cedentes, $candidatos, $tipoProcessos,$processoVagas,$processoTipoVagas,$processos;
+    public $arquivoEdital;
     protected $listeners = [
         'editCrudForm' => 'edit',
         'deleteCrudForm' => 'delete',
@@ -78,6 +82,12 @@ class CrudFormComponent extends Component
     {
         $this->validate(app($this->model)->rules);
         try {
+            // dd($this->data);
+            if($this->arquivoEdital) {
+                $path = $this->arquivoEdital->store('arquivos_editais', 'public');
+                $this->data['arquivo'] = $path;
+            }
+            
             $this->model::create($this->data);
             session()->flash('message', 'Criado com sucesso!!');
             $this->resetFields();

@@ -18,15 +18,19 @@ class Formulario extends Model
 
     protected $fillable = [
         'candidato_id', 'processo_id', 'processo_vaga_id','processo_tipo_vaga_id', 'tipo_vaga', 'leitura_edital',
-        'termo_aceitacao', 'solicitacao_isencao', 'documento_ampla_concorrencia', 
+        'termo_aceitacao', 'solicitacao_isencao', 'documento_tipo_vaga', 
         'documento_solicitacao_isencao', 'key', 'status'
     ];
 
     public $rules = [
         'data.termo_aceitacao' => 'required',
+        'data.leitura_edital' => 'required',
+        'data.solicitacao_isencao' => 'required',
+        'data.processo_tipo_vaga_id' => 'required',
+        'data.tipo_vaga' => 'required',
+        'data.documento_tipo_vaga' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
     ];
 
-    // Definição dos relacionamentos
     public function candidato()
     {
         return $this->belongsTo(Candidato::class, 'candidato_id');
