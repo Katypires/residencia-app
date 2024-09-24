@@ -38,18 +38,21 @@
         <h6 class="mb-3">Leitura do Edital</h6>
         <div class="form-check form-check-inline">
             <input class="form-check-input" wire:model.prevent="data.leitura_edital" type="radio"
-                name="inlineRadioOptions" id="inlineRadio1" value="true">
+                name="inlineRadioOptions" id="inlineRadio1" value="1"> {{-- 1 para "Sim" --}}
             <label class="form-check-label" for="inlineRadio1">Sim</label>
         </div>
         <div class="form-check form-check-inline">
             <input class="form-check-input" wire:model.prevent="data.leitura_edital" type="radio"
-                name="inlineRadioOptions" id="inlineRadio2" value="false">
+                name="inlineRadioOptions" id="inlineRadio2" value="0"> {{-- 0 para "Não" --}}
             <label class="form-check-label" for="inlineRadio2">Não</label>
         </div>
     </div>
+    
 
     <div class="form-floating mb-3 col-12">
         <h6 class="mb-3">Solicitação de Isenção de Inscrição</h6>
+        
+        <!-- Opções de isenção -->
         <div class="form-check form-check-inline">
             <input class="form-check-input" wire:model.prevent="data.solicitacao_isencao" type="radio"
                 name="inlineRadioOptionsIsencao" id="inlineRadio1Isencao" value="1">
@@ -60,16 +63,36 @@
                 name="inlineRadioOptionsIsencao" id="inlineRadio2Isencao" value="0">
             <label class="form-check-label" for="inlineRadio2Isencao">Não</label>
         </div>
+    
         @if (!empty($data['solicitacao_isencao']) && $data['solicitacao_isencao'] == '1')
             <div class="form-floating m-1 col-12">
-                <input type="file" wire:model="documento_solicitacao_isencao" class="form-control-file">
-                @error('data.documento_solicitacao_isencao')
-                    <span class="error">{{ $message }}</span>
-                @enderror
+                @foreach ($documentos_solicitacao_isencao as $index => $documento)
+                    <div class="input-group mb-2">
+                        <input type="file" wire:model="documentos_solicitacao_isencao.{{ $index }}" class="form-control">
+                        <button type="button" class="btn btn-danger" wire:click="removeFile({{ $index }})">Remover</button>
+                    </div>
+                    @error('documentos_solicitacao_isencao.'.$index) 
+                        <span class="error">{{ $message }}</span>
+                    @enderror
+                @endforeach
+                
+                <button type="button" class="btn btn-success mt-2" wire:click="addFileInput">Adicionar documento</button>
             </div>
+    
+            @if ($existingFiles)
+                <h6 class="mt-3">Documentos já anexados</h6>
+                <ul>
+                    @foreach ($existingFiles as $key => $file)
+                        <li>
+                            <a href="{{ asset('storage/'.$file) }}" target="_blank">Visualizar Documento {{ $key + 1 }}</a>
+                            <button type="button" class="btn btn-danger btn-sm" wire:click="removeExistingFile({{ $key }})">Remover</button>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
         @endif
     </div>
-
+    
     <div class="form-floating mb-4 col-12">
         <h6 class="mb-4">Termo de Aceitação</h6>
         <p><strong>a. O candidato requer a inscrição para este ato e declara estar ciente e de acordo com as normas

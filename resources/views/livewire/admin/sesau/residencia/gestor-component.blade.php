@@ -53,7 +53,7 @@
             </thead>
             <tbody>
                 @foreach ($formularios as $formulario)
-                    <tr>
+                    <tr wire:key="formulario-{{ $formulario->id }}">
                         <td>{{ $formulario->candidato->nome }}</td>
                         <td>
                             @if (!empty($formulario->documento_tipo_vaga))
@@ -77,10 +77,8 @@
                         </td>
                     </tr>
                 @endforeach
-            </tbody>
+            </tbody>            
         </table>
-
-        <!-- Renderizando os links de paginação -->
         <div class="d-flex justify-content-center">
             {{ $formularios->links() }}
         </div>

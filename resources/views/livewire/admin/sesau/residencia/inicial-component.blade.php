@@ -298,8 +298,9 @@
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="" class="nav-link text-white btn btn-dark " aria-current="page"><i
-                                class="fa fa-home"></i>Inicio</a>
+                        <a href="" class="nav-link text-white" aria-current="page">
+                            <i class="fa fa-home"></i> Início
+                        </a>
                     </li>
                     {{-- <li>
                         <button data-bs-toggle="modal" data-bs-target="#vagasModal"
@@ -310,18 +311,19 @@
                     </li> --}}
                     <li>
                         <button data-bs-toggle="modal" data-bs-target="#inscricoesModal"
-                            class="nav-link text-white btn btn-dark">
+                            class="nav-link text-white">
                             <i class="fas fa-clipboard-check"></i>
                             Inscrições
                         </button>
                     </li>
                     <li>
-                        <button class="nav-link text-white btn btn-dark">
+                        <button class="nav-link text-white">
                             <i class="fas fa-user-cog"></i>
                             Informações da conta
                         </button>
                     </li>
                 </ul>
+                
                 <hr>
                 <span
                     class="badge d-flex align-items-center p-2 pe-3 text-light-emphasis bg-light-subtle border border-dark-subtle rounded-pill fs-6">

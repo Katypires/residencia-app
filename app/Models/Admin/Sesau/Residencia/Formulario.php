@@ -24,7 +24,7 @@ class Formulario extends Model
 
     public $rules = [
         'data.termo_aceitacao' => 'required',
-        'data.leitura_edital' => 'required',
+        'data.leitura_edital' => 'required|boolean',
         'data.solicitacao_isencao' => 'required',
         'data.processo_tipo_vaga_id' => 'required',
         'data.tipo_vaga' => 'required',

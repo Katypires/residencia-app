@@ -9,6 +9,13 @@ use Livewire\WithPagination;
 class GestorComponent extends Component
 {
     use WithPagination;
+    public $existingFiles;
+
+    protected $paginationTheme = 'bootstrap';
+
+    protected $listeners = [
+        'arquivosIsencao',
+    ];
 
     public function render()
     {
@@ -17,5 +24,10 @@ class GestorComponent extends Component
         return view('livewire.admin.sesau.residencia.gestor-component', [
             'formularios' => $formularios,
         ]);
+    }
+
+    public function arquivosIsencao($existingFiles)
+    {
+        $this->existingFiles = $existingFiles;
     }
 }
