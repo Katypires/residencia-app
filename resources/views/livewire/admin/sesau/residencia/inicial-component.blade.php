@@ -273,6 +273,10 @@
                                                 <div
                                                     class="card-footer bg-light d-flex justify-content-between align-items-center">
                                                     <span class="badge bg-success">Inscrito</span>
+                                                    <span class="badge bg-danger" onClick="window.open('{{ route('imprimir-boleto', ['id' => encrypt($inscricao->id)]) }}', '_blank')" target="_blank">Boleto</span>
+
+                                                    <livewire:admin.sesau.residencia.boleto.boleto-gerar-component :inscricao=$inscricao />
+
                                                     <small class="text-muted">Data:
                                                         {{ $inscricao->created_at->format('d/m/Y') }}</small>
                                                 </div>
@@ -323,7 +327,7 @@
                         </button>
                     </li>
                 </ul>
-                
+
                 <hr>
                 <span
                     class="badge d-flex align-items-center p-2 pe-3 text-light-emphasis bg-light-subtle border border-dark-subtle rounded-pill fs-6">

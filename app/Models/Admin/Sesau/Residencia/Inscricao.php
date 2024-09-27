@@ -32,4 +32,9 @@ class Inscricao extends Model
     {
         return $this->belongsTo(Formulario::class, 'formulario_id');
     }
+
+    public function processoVaga()
+    {
+        return $this->belongsTo(ProcessoVaga::class, 'processo_id');
+    }
 }

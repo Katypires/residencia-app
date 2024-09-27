@@ -73,7 +73,7 @@ class CandidatoFormComponent extends Component
             return;
         }
         $cep = $this->data['cep'];
-     
+
         // formatar o cep removendo caracteres nao numericos
         $cep = preg_replace("/[^0-9]/", "", $cep);
         $url = "http://viacep.com.br/ws/$cep/xml/";
@@ -92,10 +92,11 @@ class CandidatoFormComponent extends Component
     {
         $this->validate(app($this->model)->rules);
         try {
-            app($this->model)::find($this->data['id'])->update($this->data);
+            $this->model::find($this->data['id'])->update($this->data);
             session()->flash('message', 'Atualizado com sucesso!!');
             $this->emit('refreshCrudTable');
             $this->emit('closeFormCrud');
+            $this->emitUp('completaCandidatoForm');
             $this->emit('nextTab');
         } catch (\Exception $ex) {
             dd($ex);

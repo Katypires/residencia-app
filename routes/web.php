@@ -1,5 +1,6 @@
 <?php
 
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/imprimir-boleto/{id}', function ($id) {
+    $pdf = Pdf::loadView('admin.sesau.residencia.boleto.index');
+    return $pdf->stream();
+})->middleware('auth')->name('imprimir-boleto');
+
 
 Route::get('/', function () {
     return view('admin.sesau.residencia.home');
@@ -42,4 +49,4 @@ Route::post('/logout', function () {
     Auth::logout();
     return redirect('/'); // Redirecionar para a página inicial ou qualquer outra página desejada
 })->name('logout');
-    
+
