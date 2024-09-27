@@ -96,8 +96,9 @@ class FormularioFormComponent extends Component
                 $this->data
             );
 
-            $this->emit('nextTab');
             $this->emit('dadosInscricao', $this->candidato_id, $this->processo_id, $formulario->id);
+            $this->emitUp('completaFormularioForm');
+            $this->emit('nextTab');
             session()->flash('message', 'Salvo com sucesso!!');
         } catch (\Exception $ex) {
             dd($ex);

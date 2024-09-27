@@ -3,7 +3,7 @@
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link {{ $currentTab === 'candidato' ? 'active' : '' }}" id="candidato-tab" type="button"
-                wire:click="$set('currentTab', 'candidato')" role="tab" aria-controls="candidato"
+                wire:click.prevent="goToTab('candidato')" role="tab" aria-controls="candidato"
                 aria-selected="{{ $currentTab === 'candidato' ? 'true' : 'false' }}">
                 Candidato
             </button>
@@ -11,19 +11,22 @@
 
         <li class="nav-item" role="presentation">
             <button class="nav-link {{ $currentTab === 'formulario' ? 'active' : '' }}" id="formulario-tab"
-                type="button" wire:click="$set('currentTab', 'formulario')" role="tab" aria-controls="formulario"
+                type="button" wire:click.prevent="goToTab('formulario')" role="tab" aria-controls="formulario"
                 aria-selected="{{ $currentTab === 'formulario' ? 'true' : 'false' }}">
                 Formulário
             </button>
         </li>
+
         <li class="nav-item" role="presentation">
             <button class="nav-link {{ $currentTab === 'conclusao' ? 'active' : '' }}" id="conclusao-tab" type="button"
-                wire:click="$set('currentTab', 'conclusao')" role="tab" aria-controls="conclusao"
+                wire:click.prevent="goToTab('conclusao')" role="tab" aria-controls="conclusao"
                 aria-selected="{{ $currentTab === 'conclusao' ? 'true' : 'false' }}">
                 Conclusão
             </button>
         </li>
     </ul>
+
+
     {{-- <h6>processo_id: {{ $processo_id }}</h6>
     <h6>candidato_id: {{ $candidato_id }}</h6> --}}
 
@@ -77,7 +80,7 @@
                         </button>
                         @if (session()->has('message'))
                             <div class="alert alert-danger alert-dismissible fade show px-2" role="alert">
-                                {{ session('message') }} 
+                                {{ session('message') }}
                                 <br>
                                 <a href="">VOLTAR</a>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
