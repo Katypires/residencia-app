@@ -15,23 +15,64 @@ class InscricaoComponent extends Component
     public $candidato_id, $formulario_id, $candidato;
     public $inscricaoNomeCandidato, $inscricaoNomeProcesso;
 
+    public $candidatoFormCompleto = false;
+    public $formularioFormCompleto = false;
+
+    public $conclusaoAlcancada = false;
+
     public $model;
     public $data = [];
 
     protected $listeners = [
         'nextTab',
         'inscricao',
-        'dadosInscricao'
+        'dadosInscricao',
+        'completaCandidatoForm',
+        'completaFormularioForm'
     ];
-    public function mount() {}
     public function nextTab()
     {
         if ($this->currentTab === 'candidato') {
+            if (!$this->candidatoFormCompleto) {
+                return;
+            }
             $this->currentTab = 'formulario';
-        } else if ($this->currentTab ===  'formulario') {
+        } else if ($this->currentTab === 'formulario') {
+            if (!$this->formularioFormCompleto) {
+                return;
+            }
             $this->currentTab = 'conclusao';
+        } 
+    }
+
+    public function goToTab($tab)
+    {
+        if ($this->conclusaoAlcancada) {
+            if (in_array($tab, ['candidato', 'formulario', 'conclusao'])) {
+                $this->currentTab = $tab;
+            }
+        } else {
+            if ($this->currentTab === 'conclusao') {
+                $this->conclusaoAlcancada = true;
+                if (in_array($tab, ['candidato', 'formulario', 'conclusao'])) {
+                    $this->currentTab = $tab;
+                }
+            } else {
+                session()->flash('message', 'Chega ate aba de conclusao para poder navegar.');
+                return;
+            }
         }
     }
+    public function completaCandidatoForm()
+    {
+        $this->candidatoFormCompleto = true;
+    }
+
+    public function completaFormularioForm()
+    {
+        $this->formularioFormCompleto = true;
+    }
+
     public function render()
     {
         return view('livewire.admin.sesau.residencia.inscricao.inscricao-component');

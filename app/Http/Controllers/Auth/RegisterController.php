@@ -44,20 +44,51 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-
     /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+    function validateCPF($number)
+    {
+        // Remove todos os caracteres que não são números
+        $cpf = preg_replace('/[^0-9]/', "", $number);
+
+        // Verifica se o CPF tem 11 dígitos
+        if (strlen($cpf) != 11) {
+            return false;
+        }
+
+        // Verifica se todos os dígitos são iguais (CPFs inválidos conhecidos, como "11111111111")
+        if (preg_match('/([0-9])\1{10}/', $cpf)) {
+            return false;
+        }
+
+        // Validação dos dois dígitos verificadores
+        for ($t = 9; $t < 11; $t++) {
+            $sum = 0;
+            for ($i = 0; $i < $t; $i++) {
+                $sum += $cpf[$i] * (($t + 1) - $i);
+            }
+            $result = (($sum * 10) % 11) % 10;
+            if ($cpf[$t] != $result) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'nome' => ['required', 'string', 'max:255'],
-            'nome_social' => ['max:255'],'nullable',
+            'nome_social' => ['nullable', 'string', 'max:255'],
             'cpf' => ['required', 'string', 'max:14', function ($attribute, $value, $fail) {
-                if (!$this->validateCpf($value)) {
+                if (!$this->validateCPF($value)) {
                     $fail('O CPF fornecido não é válido.');
                 }
             }],
@@ -66,67 +97,9 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
-    // function validarCpf($cpf)
-    // {
-    //     $cpf = preg_replace('/[^0-9]/is', '', $cpf);
+    
 
-    //     if (strlen($cpf) != 11) {
-    //         return false;
-    //     }
 
-    //     if (preg_match('/(\d)\1{10}/', $cpf)) {
-    //         return false;
-    //     }
-
-    //     for ($t = 9; $t < 11; $t++) {
-    //         for ($d = 0, $c = 0; $c < $t; $c++) {
-    //             $d += $cpf[$c] * (($t + 1) - $c);
-    //         }
-    //         $d = ((10 * $d) % 11) % 10;
-    //         if ($cpf[$c] != $d) {
-    //             return false;
-    //         }
-    //     }
-    //     return true;
-    // }
-
-    function validateCPF($number) {
-
-        $cpf = preg_replace('/[^0-9]/', "", $number);
-        
-        if (strlen($cpf) != 11) {
-            return false;
-        }
-        if (strlen($cpf) != 11 || preg_match('/([0-9])\1{10}/', $cpf)) {
-
-            return false;
-        }
-
-        $number_quantity_to_loop = [9, 10];
-
-        foreach ($number_quantity_to_loop as $item) {
-
-            $sum = 0;
-            $number_to_multiplicate = $item + 1;
-        
-            for ($index = 0; $index < $item; $index++) 
-            {
-                $sum += $cpf[$index] * ($number_to_multiplicate--);
-            }
-
-            $result = (($sum * 10) % 11);
-            $var = intval($cpf[$item]);
-
-            if (intval($cpf[$item]) == $result) 
-            {  
-                return true;
-            }else
-            {
-                return false;
-            }
-        }
-        return true;
-    }
 
 
     /**
